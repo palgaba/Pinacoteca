@@ -1,5 +1,7 @@
 package com.aprilsoft.pinacoteca;
 
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,6 +10,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,6 +22,21 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        boolean EliminarBBDD = true;
+
+        //eliminar la base de datos de prieba en modo desarrollo
+        if (EliminarBBDD) {
+            String DB_PATH = "data/data/com.aprilsoft.pinacoteca/database/";
+            String myPath = DB_PATH + "BBDD";
+            SQLiteDatabase.deleteDatabase(new File(myPath));
+        }
+
+    }
+
+    public void comienzaJuegoAutor (View v){
+        Intent tarea= new Intent(this,JuegoAutorActivity.class);
+        tarea.putExtra("nombre", "button_comienzaJuegoAutor");
+        startActivity(tarea);
     }
 
     @Override
