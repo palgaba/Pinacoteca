@@ -177,15 +177,15 @@ public class JuegoAutorActivity extends AppCompatActivity {
                 //Escribe los autores en cada boton
                 Button boton01 = (Button) findViewById(R.id.button01);
                 boton01.setText(CatalogoAutores.get(listaTemporal.get(0)).getAutor());
-                boton01.setBackgroundResource(R.color.cellColor512);
+                boton01.setBackgroundResource(R.color.colorPrimary);
 
                 Button boton02 = (Button) findViewById(R.id.button02);
                 boton02.setText(CatalogoAutores.get(listaTemporal.get(1)).getAutor());
-                boton02.setBackgroundResource(R.color.cellColor512);
+                boton02.setBackgroundResource(R.color.colorPrimary);
 
                 Button boton03 = (Button) findViewById(R.id.button03);
                 boton03.setText(CatalogoAutores.get(listaTemporal.get(2)).getAutor());
-                boton03.setBackgroundResource(R.color.cellColor512);
+                boton03.setBackgroundResource(R.color.colorPrimary);
 
                 TextView textView_estado = (TextView) findViewById(R.id.textView_preguntaActualTotal);
                 textView_estado.setText((indiceActual+1) + "/" + numeroDePreguntas);
