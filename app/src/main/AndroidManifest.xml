@@ -19,7 +19,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".JuegoAutorActivity"></activity>
+        <activity android:name=".JuegoAutorActivity" />
+        <activity android:name=".Configuracion"></activity>
     </application>
 
 </manifest>

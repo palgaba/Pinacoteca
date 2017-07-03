@@ -15,7 +15,7 @@
     <color name="cellColor256">#43A047</color>
     <color name="cellColor512">#4DB6AC</color>
     <color name="cellColor1024">#00695C</color>
-    <color name="cellColor2048">#AA00FF</color>
+    <color name="cellColor2048">#aa00ff</color>
     <color name="cellColor4096">#880E4F</color>
 
 
