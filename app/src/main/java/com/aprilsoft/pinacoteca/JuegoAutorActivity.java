@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Handler;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -49,7 +50,6 @@ public class JuegoAutorActivity extends AppCompatActivity {
 
         } catch (Exception e) {
             e.printStackTrace();
-            Log.v("ERROR", e.toString());
         }
 
     }
@@ -69,7 +69,7 @@ public class JuegoAutorActivity extends AppCompatActivity {
             numeroDePreguntas=Conf.getPreguntas();
 
 
-            //cargar un array de TODAS las obras que se leen desde un XMl alojado en RES/raw
+            //cargar un array de TODAS las obras
             CatalogoObras = CargarObras();
 
             //lo necesito para escoger mas autores que no son para completar las respuestas
@@ -83,61 +83,14 @@ public class JuegoAutorActivity extends AppCompatActivity {
                 ObrasSeleccionadas.add(CatalogoObras.get(listaTemporal.get(i)));
             }
 
-            //TITULO de la primera ... indice =0
-            TextView textView_titulo = (TextView) findViewById(R.id.textView_titulo);
-            textView_titulo.setText(ObrasSeleccionadas.get(indiceActual).getTitulo());
-
-            //IMAGEN DEL CUADRO...
-            String Imagen = ObrasSeleccionadas.get(indiceActual).getImagen();
-
-            //busco el identificador interno a partir del nombre del recurso
-            Resources res = getResources();
-            int resourceId = res.getIdentifier(Imagen, "drawable", getPackageName() );
-
-            ImageView MiimageCodigo = (ImageView) findViewById(R.id.MI_imageView);
-            MiimageCodigo.setImageResource( resourceId );
-
-            int IDAutorReal = ObrasSeleccionadas.get(indiceActual).getIdautor();
-
-            listaTemporal=NumeroaAleatoriosSinRepeticion(0,CatalogoAutores.size(),2,IDAutorReal);
-
-            listaTemporal = BajaraLista(listaTemporal);
-
-            //Escribe los autores en cada boton
-            Button boton01 = (Button) findViewById(R.id.button01);
-            boton01.setText(CatalogoAutores.get(listaTemporal.get(0)).getAutor());
-
-            Button boton02 = (Button) findViewById(R.id.button02);
-            boton02.setText(CatalogoAutores.get(listaTemporal.get(1)).getAutor());
-
-            Button boton03 = (Button) findViewById(R.id.button03);
-            boton03.setText(CatalogoAutores.get(listaTemporal.get(2)).getAutor());;
-
-            TextView textView_estado = (TextView) findViewById(R.id.textView_preguntaActualTotal);
-            textView_estado.setText((indiceActual+1)+ "/" + numeroDePreguntas);
-
+            SiguientePregunta();
 
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void CompruebaRespuesta(Button BotonSeleccionado){
 
-        String AutorSeleccionado = BotonSeleccionado.getText().toString();
-        String AutorReal = ObrasSeleccionadas.get(indiceActual).getAutorNombre();
-
-        if (AutorSeleccionado.equals(AutorReal)) {
-            BotonSeleccionado.setBackgroundColor(Color.GREEN);
-            aciertos++;
-        }else {
-            BotonSeleccionado.setBackgroundColor(Color.RED);
-            Toast.makeText(this, "oohhhh !!!", Toast.LENGTH_SHORT).show();
-            errores++;
-        }
-
-        delay(1);
-    }
 
     public void SiguientePregunta(){
 
@@ -154,6 +107,7 @@ public class JuegoAutorActivity extends AppCompatActivity {
 //                tarea.putExtra("aciertos", ParamAciertos);
 //                startActivity(tarea);
             }else{
+
                 //TITULO de la primera ... indice =0
                 TextView textView_titulo = (TextView) findViewById(R.id.textView_titulo);
                 textView_titulo.setText(ObrasSeleccionadas.get(indiceActual).getTitulo());
@@ -177,27 +131,25 @@ public class JuegoAutorActivity extends AppCompatActivity {
                 //Escribe los autores en cada boton
                 Button boton01 = (Button) findViewById(R.id.button01);
                 boton01.setText(CatalogoAutores.get(listaTemporal.get(0)).getAutor());
-                boton01.setBackgroundResource(R.color.colorPrimary);
+                boton01.setBackgroundColor(ContextCompat.getColor(this, R.color.colorBoton));
 
                 Button boton02 = (Button) findViewById(R.id.button02);
                 boton02.setText(CatalogoAutores.get(listaTemporal.get(1)).getAutor());
-                boton02.setBackgroundResource(R.color.colorPrimary);
+                boton02.setBackgroundColor(ContextCompat.getColor(this, R.color.colorBoton));
 
                 Button boton03 = (Button) findViewById(R.id.button03);
                 boton03.setText(CatalogoAutores.get(listaTemporal.get(2)).getAutor());
-                boton03.setBackgroundResource(R.color.colorPrimary);
+                boton03.setBackgroundColor(ContextCompat.getColor(this, R.color.colorBoton));
 
+                //el indice de la pregunta x/total
                 TextView textView_estado = (TextView) findViewById(R.id.textView_preguntaActualTotal);
                 textView_estado.setText((indiceActual+1) + "/" + numeroDePreguntas);
             }
 
 
-
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
 
     }
 
@@ -212,6 +164,23 @@ public class JuegoAutorActivity extends AppCompatActivity {
     public void  Boton_03 (View v){
         Button boton1 = (Button)findViewById(R.id.button03);
         CompruebaRespuesta(boton1);
+    }
+
+    public void CompruebaRespuesta(Button BotonSeleccionado){
+
+        String AutorSeleccionado = BotonSeleccionado.getText().toString();
+        String AutorReal = ObrasSeleccionadas.get(indiceActual).getAutorNombre();
+
+        if (AutorSeleccionado.equals(AutorReal)) {
+            BotonSeleccionado.setBackgroundColor(ContextCompat.getColor(this, R.color.cellColor256));
+            aciertos++;
+        }else {
+            BotonSeleccionado.setBackgroundColor(ContextCompat.getColor(this, R.color.lightUpRectangle));
+            Toast.makeText(this, "oohhhh !!!", Toast.LENGTH_SHORT).show();
+            errores++;
+        }
+
+        delay(1);
     }
 
     private Configuracion RecuperarConfiguracion(){
@@ -250,9 +219,9 @@ public class JuegoAutorActivity extends AppCompatActivity {
         SQLiteDatabase bd = admin.getWritableDatabase();
 
         String  consultaSQL;
-        consultaSQL  = " SELECT Cuadros.titulo, Autores.nombre, Estilos.nombre, Cuadros.imagen ";
-        consultaSQL += " FROM Autores INNER JOIN (Estilos INNER JOIN Cuadros ON Estilos.id = Cuadros.idEstilo) ON Autores.id = Cuadros.idAutor;";
 
+        consultaSQL   = " SELECT Cuadros.id, Cuadros.titulo, Cuadros.idAutor, Autores.nombre, Cuadros.idEstilo, Estilos.nombre, Cuadros.imagen ";
+        consultaSQL  += " FROM (Cuadros INNER JOIN Autores ON Cuadros.idAutor = Autores.id) INNER JOIN Estilos ON Cuadros.idEstilo = Estilos.id;";
 
         Cursor fila = bd.rawQuery(consultaSQL , null);
 
@@ -265,10 +234,13 @@ public class JuegoAutorActivity extends AppCompatActivity {
                 do {
                     Obra Obra_item = new Obra();
 
-                    Obra_item.setTitulo(fila.getString(0));
-                    Obra_item.setAutorNombre(fila.getString(1));
-                    Obra_item.setEstilo(fila.getString(2));
-                    Obra_item.setImagen(fila.getString(3));
+                    Obra_item.setId(fila.getInt(0));
+                    Obra_item.setTitulo(fila.getString(1));
+                    Obra_item.setIdautor(fila.getInt(2));
+                    Obra_item.setAutorNombre(fila.getString(3));
+                    Obra_item.setIdEstilo(fila.getInt(4));
+                    Obra_item.setEstilo(fila.getString(5));
+                    Obra_item.setImagen(fila.getString(6));
 
 
                     CatalogoObras.add(Obra_item);

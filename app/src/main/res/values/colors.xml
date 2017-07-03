@@ -5,7 +5,7 @@
     <color name="colorSecundary">#9fb1bc</color>
     <color name="colorComplementary">#d3d0cb</color>
     <color name="colorAccent">#e2c044</color>
-
+    <color name="colorBoton">#5a595b</color>
 
 
     <color name="lightUpRectangle">#cf3721</color>
@@ -17,4 +17,6 @@
     <color name="cellColor1024">#00695C</color>
     <color name="cellColor2048">#AA00FF</color>
     <color name="cellColor4096">#880E4F</color>
+
+
 </resources>

@@ -34,7 +34,7 @@
         android:onClick="comienzaJuegoAutor"
         android:text="@string/Main_button"
         android:textColor="@color/colorComplementary"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />

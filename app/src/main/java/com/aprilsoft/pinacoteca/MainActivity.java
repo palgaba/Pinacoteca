@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void comienzaJuegoAutor (View v){
         Intent tarea= new Intent(this,JuegoAutorActivity.class);
-        tarea.putExtra("nombre", "button_comienzaJuegoAutor");
+        tarea.putExtra("xAutor", "button_comienzaJuegoAutor");
         startActivity(tarea);
     }
 
