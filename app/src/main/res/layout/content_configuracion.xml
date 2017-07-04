@@ -16,7 +16,7 @@
         android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -86,6 +86,14 @@
                     android:textColor="@color/colorAccent"
                     android:textSize="18sp" />
 
+                <SeekBar
+                    android:id="@+id/seekBar_dificultad"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:max="2"
+                    android:progress="0" />
+
             </LinearLayout>
 
         </LinearLayout>
@@ -141,7 +149,7 @@
             android:background="@color/colorComplementary" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -168,6 +176,14 @@
                     android:textColor="@color/colorAccent"
                     android:textSize="18sp" />
 
+                <SeekBar
+                    android:id="@+id/seekBar2"
+                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:max="2"
+                    android:progress="0" />
+
             </LinearLayout>
         </LinearLayout>
 
@@ -178,7 +194,7 @@
             android:background="@color/colorComplementary" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -208,7 +224,7 @@
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:text="TextView" />
             </LinearLayout>
         </LinearLayout>

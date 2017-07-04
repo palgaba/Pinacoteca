@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        boolean EliminarBBDD = true;
+        boolean EliminarBBDD = false;
 
         //eliminar la base de datos de prieba en modo desarrollo
         if (EliminarBBDD) {
