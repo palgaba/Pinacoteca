@@ -29,7 +29,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("create table Estilos(id integer primary key, nombre text)");
         db.execSQL("create table Autores(id integer primary key, nombre text, idEstilo integer)");
         db.execSQL("create table Cuadros(id integer primary key, idAutor integer, idEstilo int, titulo text, imagen text)");
-        db.execSQL("create table Configuracion(id integer primary key, NumeroPreguntas integer, Dificultad text, opcion1 text, opcion2 text)");
+        db.execSQL("create table Configuracion(id integer primary key, NumeroPreguntas integer, Dificultad text, tipo text, tiempo text)");
 
         //Insertamos los datos en la tabla Estilo
         db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (0,'Abstracto')");
@@ -112,7 +112,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (50,16,2,'Puente en villeneuve','cuadro050')");
 
         //Insertamos los datos en la tabla configuracion
-        db.execSQL("INSERT INTO Configuracion (id, NumeroPreguntas, Dificultad, opcion1, opcion2 ) VALUES (1,12,'facil','-','-')");
+        db.execSQL("INSERT INTO Configuracion (id, NumeroPreguntas, Dificultad, tipo, tiempo ) VALUES (1,12,'facil','autor','no')");
 
     }
 
@@ -126,10 +126,10 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
             android.util.Log.v("BBDD", "Actualizamos a versión 2");
 
             db.execSQL("DROP TABLE IF EXISTS Configuracion ");
-            db.execSQL("create table Configuracion(id integer primary key, NumeroPreguntas integer, Dificultad text, opcion1 text, opcion2 text)");
+            db.execSQL("create table Configuracion(id integer primary key, NumeroPreguntas integer, Dificultad text, tipo text, tiempo text)");
 
             //Insertamos los datos en la tabla configuracion
-            db.execSQL("INSERT INTO Configuracion (id, NumeroPreguntas, Dificultad, opcion1, opcion2 ) VALUES (1,12,'facil','0','1')");
+            db.execSQL("INSERT INTO Configuracion (id, NumeroPreguntas, Dificultad, tipo, tiempo )  VALUES (1,12,'facil','autor','no')");
 
 
         }

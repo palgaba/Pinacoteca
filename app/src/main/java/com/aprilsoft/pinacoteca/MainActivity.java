@@ -3,8 +3,6 @@ package com.aprilsoft.pinacoteca;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -26,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
         //eliminar la base de datos de prieba en modo desarrollo
         if (EliminarBBDD) {
-            String DB_PATH = "data/data/com.aprilsoft.pinacoteca/database/";
+            String DB_PATH = "/data/user/0/com.aprilsoft.pinacoteca/databases/";
             String myPath = DB_PATH + "BBDD";
             SQLiteDatabase.deleteDatabase(new File(myPath));
         }
@@ -55,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            Intent tarea= new Intent(this,Configuracion.class);
+            Intent tarea= new Intent(this,ConfiguracionActivity.class);
             tarea.putExtra("xAutor", "Configuracion");
             startActivity(tarea);
             return true;

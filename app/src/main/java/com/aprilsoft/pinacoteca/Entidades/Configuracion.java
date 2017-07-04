@@ -9,10 +9,8 @@ public class Configuracion {
     private int id;
     private int Preguntas;
     private String dificultad;
-    private String opcion1;
-    private String opcion2;
-
-
+    private String tiempo;
+    private String tipo;
     public int getId() {
         return id;
     }
@@ -37,21 +35,22 @@ public class Configuracion {
         this.dificultad = dificultad;
     }
 
-    public String getOpcion1() {
-        return opcion1;
+    public String getTiempo() {
+        return tiempo;
     }
 
-    public void setOpcion1(String opcion1) {
-        this.opcion1 = opcion1;
+    public void setTiempo(String tiempo) {
+        this.tiempo = tiempo;
     }
 
-    public String getOpcion2() {
-        return opcion2;
+    public String getTipo() {
+        return tipo;
     }
 
-    public void setOpcion2(String opcion2) {
-        this.opcion2 = opcion2;
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
+
 
 
 

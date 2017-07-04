@@ -12,7 +12,7 @@
     <color name="backgroundRectangle">#de7a22</color>
     <color name="background">#f4cc70</color>
     <color name="cellColor128">#7CB342</color>
-    <color name="cellColor256">#43A047</color>
+    <color name="cellColor256">#43a047</color>
     <color name="cellColor512">#4DB6AC</color>
     <color name="cellColor1024">#00695C</color>
     <color name="cellColor2048">#aa00ff</color>

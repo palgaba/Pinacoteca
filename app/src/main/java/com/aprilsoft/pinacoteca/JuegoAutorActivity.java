@@ -1,5 +1,6 @@
 package com.aprilsoft.pinacoteca;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -54,34 +55,11 @@ public class JuegoAutorActivity extends AppCompatActivity {
 
     }
 
-
     public void reiniciaJuego(){
 
         try {
 
-            //inicializamos variables de configuracion
-            Conf = RecuperarConfiguracion();
-
-            //inicializa varible generales del juego
-            aciertos=0;
-            errores=0;
-            indiceActual=0;
-            numeroDePreguntas=Conf.getPreguntas();
-
-
-            //cargar un array de TODAS las obras
-            CatalogoObras = CargarObras();
-
-            //lo necesito para escoger mas autores que no son para completar las respuestas
-            CatalogoAutores =  CargarAutores();
-
-            //selecciona aleatoriamente dentro del catalogo n obras
-            listaTemporal=NumeroaAleatoriosSinRepeticion(0,CatalogoObras.size(),numeroDePreguntas,-1);
-
-            //guarda los n obras aleatorias en las obras seleccionadas para preguntar
-            for (int i = 0; i < numeroDePreguntas ; i++) {
-                ObrasSeleccionadas.add(CatalogoObras.get(listaTemporal.get(i)));
-            }
+            PreparaTablero();
 
             SiguientePregunta();
 
@@ -90,7 +68,34 @@ public class JuegoAutorActivity extends AppCompatActivity {
         }
     }
 
+    public void PreparaTablero(){
 
+        Util utilidades = new Util();
+
+        //inicializamos variables de configuracion
+        Conf = utilidades.RecuperaConfiguracion(this);
+
+        //inicializa varible generales del juego
+        aciertos=0;
+        errores=0;
+        indiceActual=0;
+        numeroDePreguntas=Conf.getPreguntas();
+
+        //cargar un array de TODAS las obras
+        CatalogoObras = CargarObras();
+
+        //lo necesito para escoger mas autores que no son para completar las respuestas
+        CatalogoAutores =  CargarAutores();
+
+        //selecciona aleatoriamente dentro del catalogo n obras
+        listaTemporal=NumeroaAleatoriosSinRepeticion(0,CatalogoObras.size(),numeroDePreguntas,-1);
+
+        //guarda los n obras aleatorias en las obras seleccionadas para preguntar
+        for (int i = 0; i < numeroDePreguntas ; i++) {
+            ObrasSeleccionadas.add(CatalogoObras.get(listaTemporal.get(i)));
+        }
+
+    }
 
     public void SiguientePregunta(){
 
@@ -181,34 +186,6 @@ public class JuegoAutorActivity extends AppCompatActivity {
         }
 
         delay(1);
-    }
-
-    private Configuracion RecuperarConfiguracion(){
-
-        Configuracion out = new Configuracion();
-
-        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"BBDD", null, AdminSQLiteOpenHelper.DATABASE_VERSION);
-
-        SQLiteDatabase bd = admin.getWritableDatabase();
-
-        Cursor fila = bd.rawQuery("select id, NumeroPreguntas, Dificultad, opcion1, opcion2 from configuracion where id=1", null);
-
-        if (fila.moveToFirst()) {
-
-            out.setId(1);
-            out.setPreguntas(fila.getInt(1));
-            out.setDificultad(fila.getString(2));
-            out.setOpcion1(fila.getString(3));
-            out.setOpcion2(fila.getString(4));
-
-
-        } else
-            Toast.makeText(this, "No existe ningúna configuracion",Toast.LENGTH_SHORT).show();
-
-        bd.close();
-
-        return  out;
-
     }
 
     private List<Obra> CargarObras(){

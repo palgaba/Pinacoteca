@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".JuegoAutorActivity" />
-        <activity android:name=".Configuracion"></activity>
+        <activity android:name=".ConfiguracionActivity"></activity>
     </application>
 
 </manifest>

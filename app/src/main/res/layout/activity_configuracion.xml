@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.aprilsoft.pinacoteca.Configuracion">
+    tools:context="com.aprilsoft.pinacoteca.ConfiguracionActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -16,7 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimaryDark"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="Configuracion"/>
 
         <include
             layout="@layout/content_configuracion"
@@ -24,9 +25,5 @@
             android:layout_height="wrap_content" />
 
     </android.support.design.widget.AppBarLayout>
-
-
-
-
 </android.support.design.widget.CoordinatorLayout>
 
