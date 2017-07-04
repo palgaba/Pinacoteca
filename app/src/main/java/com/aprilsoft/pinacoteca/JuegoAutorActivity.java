@@ -104,13 +104,13 @@ public class JuegoAutorActivity extends AppCompatActivity {
             //comprueba final de fase
             if( (indiceActual) >= numeroDePreguntas){
 
-//                GuardarEstadisticas();
-//
-//                String ParamAciertos;
-//                ParamAciertos = String.valueOf(aciertos);
-//                Intent tarea= new Intent(this,FinalEstadisticasActivity.class);
-//                tarea.putExtra("aciertos", ParamAciertos);
-//                startActivity(tarea);
+                Intent tarea = new Intent(this,estadisticasFinales.class);
+
+                tarea.putExtra("aciertos", String.valueOf(aciertos));
+                tarea.putExtra("preguntas", String.valueOf(numeroDePreguntas));
+
+                startActivity(tarea);
+
             }else{
 
                 //TITULO de la primera ... indice =0
