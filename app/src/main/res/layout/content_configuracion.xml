@@ -38,7 +38,7 @@
                     android:layout_weight="5"
                     android:paddingBottom="5dp"
                     android:paddingLeft="5dp"
-                    android:text="Nº PREGUNTAS"
+                    android:text="@string/Idioma_Preguntas"
                     android:textColor="@color/colorAccent"
                     android:textSize="18sp" />
 
@@ -46,9 +46,10 @@
                     android:id="@+id/editText_numeroPreguntas"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:ems="5"
                     android:inputType="number"
-                    android:textSize="14sp" />
+                    android:maxLength="2"
+                    android:selectAllOnFocus="true"
+                    android:textSize="18sp" />
 
             </LinearLayout>
         </LinearLayout>
@@ -57,7 +58,6 @@
             android:layout_height="2dp"
             android:layout_marginBottom="5dp"
             android:background="@color/colorComplementary" />
-
 
 
         <LinearLayout
@@ -82,7 +82,7 @@
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
                     android:paddingLeft="5dp"
-                    android:text="DIFICULTAD"
+                    android:text="********"
                     android:textAllCaps="false"
                     android:textColor="@color/colorAccent"
                     android:textSize="18sp" />
@@ -103,7 +103,6 @@
             android:layout_height="2dp"
             android:layout_marginBottom="5dp"
             android:background="@color/colorComplementary" />
-
 
 
         <LinearLayout
@@ -129,7 +128,7 @@
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
                     android:paddingLeft="5dp"
-                    android:text="TIEMPO"
+                    android:text="@string/Idioma_Tiempo"
                     android:textColor="@color/colorAccent"
                     android:textSize="18sp" />
 
@@ -146,7 +145,6 @@
             android:layout_height="2dp"
             android:layout_marginBottom="5dp"
             android:background="@color/colorComplementary" />
-
 
 
         <LinearLayout
@@ -172,7 +170,7 @@
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
                     android:paddingLeft="5dp"
-                    android:text="BUSCA"
+                    android:text="********"
                     android:textColor="@color/colorAccent"
                     android:textSize="18sp" />
 
@@ -191,7 +189,6 @@
             android:layout_height="2dp"
             android:layout_marginBottom="5dp"
             android:background="@color/colorComplementary" />
-
 
 
         <LinearLayout
@@ -218,7 +215,7 @@
                     android:layout_height="wrap_content"
                     android:paddingBottom="5dp"
                     android:paddingLeft="5dp"
-                    android:text="Acerca de..."
+                    android:text="@string/Idioma_AcercaDe"
                     android:textColor="@color/colorAccent"
                     android:textSize="18sp" />
 
@@ -226,7 +223,12 @@
                     android:id="@+id/textView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="TextView" />
+                    android:paddingBottom="5dp"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="5dp"
+                    android:text="@string/Idioma_AcercaDeTexto"
+                    android:textAppearance="@style/TextAppearance.AppCompat" />
             </LinearLayout>
         </LinearLayout>
         <View
@@ -237,8 +239,6 @@
             android:elevation="1dp" />
 
 
-
     </LinearLayout>
-
 
 </ScrollView>

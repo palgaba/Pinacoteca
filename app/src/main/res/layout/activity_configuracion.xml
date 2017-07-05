@@ -17,7 +17,7 @@
             android:layout_height="?attr/actionBarSize"
             android:background="@color/colorPrimaryDark"
             app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:title="Configuracion"/>
+            app:title="@string/action_settings" />
 
         <include
             layout="@layout/content_configuracion"

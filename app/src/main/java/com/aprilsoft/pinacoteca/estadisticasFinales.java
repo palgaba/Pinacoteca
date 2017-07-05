@@ -1,5 +1,6 @@
 package com.aprilsoft.pinacoteca;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,9 +27,16 @@ public class estadisticasFinales extends AppCompatActivity {
         PorcentaAcierto = ((Integer.parseInt(Aciertos)*100)/Integer.parseInt(preguntas));
         mi_rating.setNumStars(5);
         mi_rating.setStepSize(1/10);
-        mi_rating.setRating((PorcentaAcierto*5)/100);
+        PorcentaAcierto=(PorcentaAcierto*5)/100;
 
-        textView_estado.setText( Aciertos + " aciertos");
+        String msg = Aciertos + " " + getResources().getString(R.string.Idioma_resultados);
+
+        textView_estado.setText(msg);
+
+        ObjectAnimator anim = ObjectAnimator.ofFloat(mi_rating, "rating", 0, PorcentaAcierto);
+        anim.setDuration(1000);
+        anim.start();
+
     }
 
 
@@ -36,5 +44,7 @@ public class estadisticasFinales extends AppCompatActivity {
         Intent tarea= new Intent(this,MainActivity.class);
         tarea.putExtra("reinicio", "param2");
         startActivity(tarea);
+
+
     }
 }

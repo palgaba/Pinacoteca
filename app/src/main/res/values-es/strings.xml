@@ -1,7 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Pinacoteca</string>
     <string name="action_settings">Configuracion</string>
-
+    <string name="Main_button">Comenzar</string>
 
     <!--Activity Main-->
     <string name="Idioma_Preguntas">Nº PREGUNTAS</string>
@@ -12,26 +13,28 @@
     <string name="Idioma_SI">SI</string>
     <string name="Idioma_NO">NO</string>
 
-    <string name="Idioma_Facil">Facil</string>
+    <string name="Idioma_Facil">Fácil</string>
     <string name="Idioma_Normal">Normal</string>
-    <string name="Idioma_Dificil">Dificil</string>
+    <string name="Idioma_Dificil">Difícil</string>
+
+    <string name="Idioma_DIFICULTAD_Facil">DIFICULTAD Fácil</string>
+    <string name="Idioma_DIFICULTAD_Normal">DIFICULTAD Normal</string>
+    <string name="Idioma_DIFICULTAD_Dificil">DIFICULTAD Difícil</string>
+
 
     <string name="Idioma_Autor">Autor</string>
     <string name="Idioma_Estilo">Estilo</string>
     <string name="Idioma_Titulo">Titulo</string>
 
-    <string name="Main_button">Comenzar</string>
-    <string name="Idioma_Error">Error</string>
-    <string name="Idioma_Invalido">Invalido</string>
-
-    <string name="Idioma_DIFICULTAD_Dificil">DIFICULTAD Difícil</string>
-    <string name="Idioma_DIFICULTAD_Facil">DIFICULTAD Fácil</string>
-    <string name="Idioma_DIFICULTAD_Normal">DIFICULTAD Normal</string>
-
     <string name="Idioma_TIPO_Autor">BUSCAR por Autor</string>
     <string name="Idioma_TIPO_Estilo">BUSCAR por Estilo</string>
     <string name="Idioma_TIPO_Titulo">BUSCAR por Titulo</string>
+
+
+    <string name="Idioma_Error">Error</string>
+    <string name="Idioma_Invalido">Invalido</string>
+
     <string name="Idioma_resultados">Aciertos</string>
     <string name="Idioma_Volver">VOLVER</string>
-    <string name="Idioma_AcercaDeTexto" translatable="false">Pedro SEVILLA 2017</string>
+
 </resources>

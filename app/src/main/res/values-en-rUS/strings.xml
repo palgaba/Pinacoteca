@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gallery</string>
+    <string name="action_settings">configuration</string>
+
+
+    <!--Activity Main-->
+    <string name="Main_button">start</string>
+    <string name="Idioma_AcercaDe">About</string>
+    <string name="Idioma_Autor">Author</string>
+    <string name="Idioma_Dificil">Hard</string>
+    <string name="Idioma_Busca">SEARCH</string>
+    <string name="Idioma_Dificultad">DIFFICULTY</string>
+    <string name="Idioma_Facil">Easy</string>
+    <string name="Idioma_Estilo">Style</string>
+    <string name="Idioma_NO">OFF</string>
+    <string name="Idioma_SI">ON</string>
+    <string name="Idioma_Normal">Normal</string>
+    <string name="Idioma_Preguntas">No. of questions</string>
+    <string name="Idioma_Tiempo">Timer</string>
+    <string name="Idioma_Titulo">Title</string>
+    <string name="Idioma_Error">Error</string>
+    <string name="Idioma_Invalido">Invalid</string>
+    <string name="Idioma_DIFICULTAD_Dificil">Hard Game</string>
+    <string name="Idioma_DIFICULTAD_Facil">Easy Game</string>
+    <string name="Idioma_DIFICULTAD_Normal">Normal Game</string>
+    <string name="Idioma_TIPO_Autor">Search by Author</string>
+    <string name="Idioma_TIPO_Estilo">Search by Style</string>
+    <string name="Idioma_TIPO_Titulo">Search by Title</string>
+    <string name="Idioma_resultados">Hits</string>
+    <string name="Idioma_Volver">Return</string>
+
+</resources>
