@@ -36,6 +36,7 @@ public class JuegoAutorActivity extends AppCompatActivity {
     int errores;
     int numeroDePreguntas;
     Configuracion Conf ;
+    boolean PuedoPulsar = true;
 
 
     @Override
@@ -127,8 +128,10 @@ public class JuegoAutorActivity extends AppCompatActivity {
                 ImageView MiimageCodigo = (ImageView) findViewById(R.id.MI_imageView);
                 MiimageCodigo.setImageResource( resourceId );
 
-                int IDAutorReal = ObrasSeleccionadas.get(indiceActual).getIdautor();
 
+                //seleciono una triada de autores incluido el correcto, realmente busco solo dos
+                //y que sean diferentes del que incluyo dentro del catalogo completo de autores
+                int IDAutorReal = ObrasSeleccionadas.get(indiceActual).getIdautor();
                 listaTemporal=NumeroaAleatoriosSinRepeticion(0,CatalogoAutores.size(),2,IDAutorReal);
                 listaTemporal = BajaraLista(listaTemporal);
 
@@ -159,22 +162,30 @@ public class JuegoAutorActivity extends AppCompatActivity {
     }
 
     public void  Boton_01 (View v){
-        Button boton1 = (Button)findViewById(R.id.button01);
-        CompruebaRespuesta(boton1);
+        if(PuedoPulsar){
+            Button boton1 = (Button)findViewById(R.id.button01);
+            CompruebaRespuesta(boton1);
+        }
+
     }
     public void  Boton_02 (View v){
-        Button boton1 = (Button)findViewById(R.id.button02);
-        CompruebaRespuesta(boton1);
+        if(PuedoPulsar) {
+            Button boton1 = (Button) findViewById(R.id.button02);
+            CompruebaRespuesta(boton1);
+        }
     }
     public void  Boton_03 (View v){
-        Button boton1 = (Button)findViewById(R.id.button03);
-        CompruebaRespuesta(boton1);
+        if(PuedoPulsar) {
+            Button boton1 = (Button) findViewById(R.id.button03);
+            CompruebaRespuesta(boton1);
+        }
     }
 
     public void CompruebaRespuesta(Button BotonSeleccionado){
 
         String AutorSeleccionado = BotonSeleccionado.getText().toString();
         String AutorReal = ObrasSeleccionadas.get(indiceActual).getAutorNombre();
+        PuedoPulsar = false;
 
         if (AutorSeleccionado.equals(AutorReal)) {
             BotonSeleccionado.setBackgroundColor(ContextCompat.getColor(this, R.color.cellColor256));
@@ -187,6 +198,7 @@ public class JuegoAutorActivity extends AppCompatActivity {
 
         delay(1);
     }
+
 
     private List<Obra> CargarObras(){
 
@@ -337,6 +349,7 @@ public class JuegoAutorActivity extends AppCompatActivity {
                         //add your code here
                         indiceActual++;
                         SiguientePregunta();
+                        PuedoPulsar = true;
                     }
                 }, milliseconds);
             }

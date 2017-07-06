@@ -34,7 +34,7 @@
                 <TextView
                     android:id="@+id/textView_preguntas"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="5"
                     android:paddingBottom="5dp"
                     android:paddingLeft="5dp"
@@ -44,7 +44,7 @@
 
                 <EditText
                     android:id="@+id/editText_numeroPreguntas"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
                     android:maxLength="2"
@@ -89,7 +89,7 @@
 
                 <SeekBar
                     android:id="@+id/seekBar_dificultad"
-                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    style="@android:style/Widget.SeekBar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:max="2"
@@ -176,7 +176,7 @@
 
                 <SeekBar
                     android:id="@+id/seekBar2"
-                    style="@style/Widget.AppCompat.SeekBar.Discrete"
+                    style="@android:style/Widget.SeekBar"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:max="2"

@@ -2,13 +2,13 @@
 <resources>
     <string name="app_name">Pinacoteca</string>
     <string name="action_settings">Configuracion</string>
-    <string name="Main_button">Comenzar</string>
+    <string name="Main_button">INICIO</string>
 
     <!--Activity Main-->
-    <string name="Idioma_Preguntas">Nº PREGUNTAS</string>
-    <string name="Idioma_Dificultad">DIFICULTAD</string>
+    <string name="Idioma_Preguntas">Nº de preguntas</string>
+    <string name="Idioma_Dificultad">Dificultad</string>
     <string name="Idioma_Tiempo">TIEMPO</string>
-    <string name="Idioma_Busca">BUSCAR POR</string>
+    <string name="Idioma_Busca">Buscar por</string>
     <string name="Idioma_AcercaDe">Acerca de ...</string>
     <string name="Idioma_SI">SI</string>
     <string name="Idioma_NO">NO</string>
@@ -17,18 +17,18 @@
     <string name="Idioma_Normal">Normal</string>
     <string name="Idioma_Dificil">Difícil</string>
 
-    <string name="Idioma_DIFICULTAD_Facil">DIFICULTAD Fácil</string>
-    <string name="Idioma_DIFICULTAD_Normal">DIFICULTAD Normal</string>
-    <string name="Idioma_DIFICULTAD_Dificil">DIFICULTAD Difícil</string>
+    <string name="Idioma_DIFICULTAD_Facil">Dificultad fácil</string>
+    <string name="Idioma_DIFICULTAD_Normal">Dificultad normal</string>
+    <string name="Idioma_DIFICULTAD_Dificil">Dificultad difícil</string>
 
 
     <string name="Idioma_Autor">Autor</string>
     <string name="Idioma_Estilo">Estilo</string>
     <string name="Idioma_Titulo">Titulo</string>
 
-    <string name="Idioma_TIPO_Autor">BUSCAR por Autor</string>
-    <string name="Idioma_TIPO_Estilo">BUSCAR por Estilo</string>
-    <string name="Idioma_TIPO_Titulo">BUSCAR por Titulo</string>
+    <string name="Idioma_TIPO_Autor">Jugar por autor</string>
+    <string name="Idioma_TIPO_Estilo">Jugar por estilo</string>
+    <string name="Idioma_TIPO_Titulo">Jugar por titulo</string>
 
 
     <string name="Idioma_Error">Error</string>
