@@ -21,7 +21,8 @@
         </activity>
         <activity android:name=".JuegoAutorActivity" />
         <activity android:name=".ConfiguracionActivity" />
-        <activity android:name=".estadisticasFinales"></activity>
+        <activity android:name=".estadisticasFinales" />
+        <activity android:name=".CatalogoActivity"></activity>
     </application>
 
 </manifest>

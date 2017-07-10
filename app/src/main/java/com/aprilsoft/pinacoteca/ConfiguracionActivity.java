@@ -1,5 +1,6 @@
 package com.aprilsoft.pinacoteca;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -125,7 +126,7 @@ public class ConfiguracionActivity extends AppCompatActivity {
                 if(texto.equals("")) texto ="0";
 
                 int number = Integer.valueOf(texto);
-                if(number >= 50) number = 49; //tamaño de l
+                if(number > 50) number = 50; //tamaño de l
                 // a obra
 
                 Conf.setPreguntas(number);
@@ -245,5 +246,10 @@ public class ConfiguracionActivity extends AppCompatActivity {
 
     }
 
+
+    public void CatalogoEstadisticas (View v){
+        Intent tarea= new Intent(this,CatalogoActivity.class);
+        startActivity(tarea);
+    }
 
 }
