@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.aprilsoft.pinacoteca.Entidades.Autor;
 import com.aprilsoft.pinacoteca.Entidades.Configuracion;
+import com.aprilsoft.pinacoteca.Entidades.Estilo;
 import com.aprilsoft.pinacoteca.Entidades.Obra;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,12 +30,14 @@ public class JuegoAutorActivity extends AppCompatActivity {
     int indiceActual;//mantine dentro de la lista
     List<Obra> CatalogoObras =  new ArrayList<>();
     List<Autor> CatalogoAutores =  new ArrayList<>();
+    List<Estilo> CatalogoEstilos =  new ArrayList<>();
     List<Obra> ObrasSeleccionadas =  new ArrayList<>();
     List<Integer> listaTemporal =  new ArrayList<>();
 
     int aciertos;
     int errores;
     int numeroDePreguntas;
+    String TipoJuego;
     Configuracion Conf ;
     boolean PuedoPulsar = true;
 
@@ -80,13 +83,28 @@ public class JuegoAutorActivity extends AppCompatActivity {
         aciertos=0;
         errores=0;
         indiceActual=0;
-        numeroDePreguntas=Conf.getPreguntas();
+        numeroDePreguntas = Conf.getPreguntas();
+        TipoJuego = Conf.getTipo();
 
         //cargar un array de TODAS las obras
         CatalogoObras = CargarObras();
 
-        //lo necesito para escoger mas autores que no son para completar las respuestas
-        CatalogoAutores =  CargarAutores();
+        switch (TipoJuego) {
+            case "AUTOR":
+                //lo necesito para escoger mas autores que no son para completar las respuestas
+                CatalogoAutores =  CargarAutores();
+                break;
+            case "TITULO":
+               // CatalogoAutores =  CargarAutores();
+                break;
+            case "ESTILO":
+                CatalogoEstilos = CargarEstilos();
+                break;
+
+            default:
+                break;
+        }
+
 
         //selecciona aleatoriamente dentro del catalogo n obras
         listaTemporal=NumeroaAleatoriosSinRepeticion(0,CatalogoObras.size(),numeroDePreguntas,-1);
@@ -129,25 +147,20 @@ public class JuegoAutorActivity extends AppCompatActivity {
                 MiimageCodigo.setImageResource( resourceId );
 
 
-                //seleciono una triada de autores incluido el correcto, realmente busco solo dos
-                //y que sean diferentes del que incluyo dentro del catalogo completo de autores
-                int IDAutorReal = ObrasSeleccionadas.get(indiceActual).getIdautor();
-                listaTemporal=NumeroaAleatoriosSinRepeticion(0,CatalogoAutores.size(),2,IDAutorReal);
-                listaTemporal = BajaraLista(listaTemporal);
+                switch (TipoJuego) {
+                    case "AUTOR":
+                        JuegoxAutor();
+                        break;
+                    case "TITULO":
+                        JuegoxTitulo();
+                        break;
+                    case "ESTILO":
+                        JuegoxEstilo();
+                        break;
 
-
-                //Escribe los autores en cada boton
-                Button boton01 = (Button) findViewById(R.id.button01);
-                boton01.setText(CatalogoAutores.get(listaTemporal.get(0)).getAutor());
-                boton01.setBackgroundColor(ContextCompat.getColor(this, R.color.colorBoton));
-
-                Button boton02 = (Button) findViewById(R.id.button02);
-                boton02.setText(CatalogoAutores.get(listaTemporal.get(1)).getAutor());
-                boton02.setBackgroundColor(ContextCompat.getColor(this, R.color.colorBoton));
-
-                Button boton03 = (Button) findViewById(R.id.button03);
-                boton03.setText(CatalogoAutores.get(listaTemporal.get(2)).getAutor());
-                boton03.setBackgroundColor(ContextCompat.getColor(this, R.color.colorBoton));
+                    default:
+                        break;
+                }
 
                 //el indice de la pregunta x/total
                 TextView textView_estado = (TextView) findViewById(R.id.textView_preguntaActualTotal);
@@ -184,10 +197,28 @@ public class JuegoAutorActivity extends AppCompatActivity {
     public void CompruebaRespuesta(Button BotonSeleccionado){
 
         String AutorSeleccionado = BotonSeleccionado.getText().toString();
-        String AutorReal = ObrasSeleccionadas.get(indiceActual).getAutorNombre();
+        String Autor_Estilo_Titulo_Real="";
+
+        switch (TipoJuego) {
+            case "AUTOR":
+                Autor_Estilo_Titulo_Real = ObrasSeleccionadas.get(indiceActual).getAutorNombre();
+                break;
+            case "TITULO":
+                Autor_Estilo_Titulo_Real = ObrasSeleccionadas.get(indiceActual).getTitulo();
+                break;
+            case "ESTILO":
+                Autor_Estilo_Titulo_Real = ObrasSeleccionadas.get(indiceActual).getEstilo();
+                break;
+
+            default:
+                break;
+        }
+
+
+
         PuedoPulsar = false;
 
-        if (AutorSeleccionado.equals(AutorReal)) {
+        if (AutorSeleccionado.equals(Autor_Estilo_Titulo_Real)) {
             BotonSeleccionado.setBackgroundColor(ContextCompat.getColor(this, R.color.cellColor256));
             aciertos++;
         }else {
@@ -199,6 +230,74 @@ public class JuegoAutorActivity extends AppCompatActivity {
         delay(1);
     }
 
+    public void JuegoxAutor(){
+
+        //seleciono una triada de autores incluido el correcto, realmente busco solo dos
+        //y que sean diferentes del que incluyo dentro del catalogo completo de autores
+        int IDAutorReal = ObrasSeleccionadas.get(indiceActual).getIdautor();
+        listaTemporal=NumeroaAleatoriosSinRepeticion(0,CatalogoAutores.size(),2,IDAutorReal);
+        listaTemporal = BajaraLista(listaTemporal);
+
+
+        //Escribe los autores en cada boton
+        Button boton01 = (Button) findViewById(R.id.button01);
+        boton01.setText(CatalogoAutores.get(listaTemporal.get(0)).getAutor());
+        boton01.setBackgroundColor(ContextCompat.getColor(this, R.color.colorBoton));
+
+        Button boton02 = (Button) findViewById(R.id.button02);
+        boton02.setText(CatalogoAutores.get(listaTemporal.get(1)).getAutor());
+        boton02.setBackgroundColor(ContextCompat.getColor(this, R.color.colorBoton));
+
+        Button boton03 = (Button) findViewById(R.id.button03);
+        boton03.setText(CatalogoAutores.get(listaTemporal.get(2)).getAutor());
+        boton03.setBackgroundColor(ContextCompat.getColor(this, R.color.colorBoton));
+    }
+
+    public void JuegoxEstilo(){
+
+        //seleciono una triada de autores incluido el correcto, realmente busco solo dos
+        //y que sean diferentes del que incluyo dentro del catalogo completo de autores
+        int IDEstiloReal = ObrasSeleccionadas.get(indiceActual).getIdEstilo();
+        listaTemporal=NumeroaAleatoriosSinRepeticion(0,CatalogoEstilos.size(),2,IDEstiloReal);
+        listaTemporal = BajaraLista(listaTemporal);
+
+
+        //Escribe los autores en cada boton
+        Button boton01 = (Button) findViewById(R.id.button01);
+        boton01.setText(CatalogoEstilos.get(listaTemporal.get(0)).getNombre());
+        boton01.setBackgroundColor(ContextCompat.getColor(this, R.color.colorBoton));
+
+        Button boton02 = (Button) findViewById(R.id.button02);
+        boton02.setText(CatalogoEstilos.get(listaTemporal.get(1)).getNombre());
+        boton02.setBackgroundColor(ContextCompat.getColor(this, R.color.colorBoton));
+
+        Button boton03 = (Button) findViewById(R.id.button03);
+        boton03.setText(CatalogoEstilos.get(listaTemporal.get(2)).getNombre());
+        boton03.setBackgroundColor(ContextCompat.getColor(this, R.color.colorBoton));
+    }
+
+    public void JuegoxTitulo(){
+
+        //seleciono una triada de autores incluido el correcto, realmente busco solo dos
+        //y que sean diferentes del que incluyo dentro del catalogo completo de autores
+        int iObraReal = ObrasSeleccionadas.get(indiceActual).getId();
+        listaTemporal=NumeroaAleatoriosSinRepeticion(0,CatalogoObras.size(),2,iObraReal);
+        listaTemporal = BajaraLista(listaTemporal);
+
+
+        //Escribe los autores en cada boton
+        Button boton01 = (Button) findViewById(R.id.button01);
+        boton01.setText(CatalogoObras.get(listaTemporal.get(0)).getTitulo());
+        boton01.setBackgroundColor(ContextCompat.getColor(this, R.color.colorBoton));
+
+        Button boton02 = (Button) findViewById(R.id.button02);
+        boton02.setText(CatalogoObras.get(listaTemporal.get(1)).getTitulo());
+        boton02.setBackgroundColor(ContextCompat.getColor(this, R.color.colorBoton));
+
+        Button boton03 = (Button) findViewById(R.id.button03);
+        boton03.setText(CatalogoObras.get(listaTemporal.get(2)).getTitulo());
+        boton03.setBackgroundColor(ContextCompat.getColor(this, R.color.colorBoton));
+    }
 
     private List<Obra> CargarObras(){
 
@@ -274,6 +373,41 @@ public class JuegoAutorActivity extends AppCompatActivity {
 
         }
         return CatalogoAutores;
+    }
+
+    private List<Estilo> CargarEstilos(){
+
+
+        AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"BBDD", null, AdminSQLiteOpenHelper.DATABASE_VERSION);
+
+        SQLiteDatabase bd = admin.getWritableDatabase();
+
+        String  consultaSQL;
+
+        consultaSQL  = " SELECT Estilos.id, Estilos.nombre ";
+        consultaSQL += " FROM Estilos ;";
+
+
+        Cursor fila = bd.rawQuery(consultaSQL , null);
+
+        List<Estilo> CatalogoEstilos = new ArrayList<>();
+
+        //Nos aseguramos de que existe al menos un registro
+        if (fila.moveToFirst()) {
+
+            //Recorremos el cursor hasta que no haya más registros
+            do {
+                Estilo estilo_item = new Estilo();
+
+                estilo_item.setIdEstilo(fila.getInt(0));
+                estilo_item.setNombre(fila.getString(1));
+
+                CatalogoEstilos.add(estilo_item);
+
+            } while(fila.moveToNext());
+
+        }
+        return CatalogoEstilos;
     }
 
     public List<Integer> NumeroaAleatoriosSinRepeticion (int minValor , int maxValor, int elementosDevueltos, int valorExcluido ) {

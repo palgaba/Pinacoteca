@@ -40,12 +40,27 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (5,'Susrealismo')");
         db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (6,'Realismo americano')");
         db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (7,'Luminismo')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (8,'Regionalismo')");
+        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (8,'Regionalismo americano')");
         db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (9,'Abstracto lirico')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (10,'Naif')");
+        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (10,'Arte Naif')");
         db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (11,'Puntillismo')");
         db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (12,'Expresionismo')");
 
+        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (13,'Neoclasicismo')");
+        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (14,'Romanticismo')");
+        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (15,'Realismo')");
+        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (16,'Simbolismo')");
+        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (17,'Art Nouveau')");
+        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (18,'Art Decó')");
+        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (19,'Fovismo')");
+        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (20,'Dadaísmo')");
+        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (21,'Pop art')");
+        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (22,'Hiperrealismo')");
+        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (23,'Renacimiento')");
+        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (24,'Manierismo')");
+        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (25,'Barroco')");
+        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (26,'Rococó')");
+        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (27,'Arte Retro')");
 
         //Insertamos los datos en la tabla Autores
         db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (0,'Pablo Picasso',0)");
@@ -219,11 +234,11 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (119,9,2,'Sunset, Rouen','cuadro119')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (120,9,2,'Boulevard Montmartre, una mañana de invierno','cuadro120')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (121,9,2,'June Morning at Pontoise','cuadro121')");
-        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (122,30,10,'The Seine at Courbevoie','cuadro122')");
-        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (123,30,10,'The river Seine at La Grande-Jatte','cuadro123')");
-        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (124,30,10,'La torre Eiffel','cuadro124')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (122,30,11,'The Seine at Courbevoie','cuadro122')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (123,30,11,'The river Seine at La Grande-Jatte','cuadro123')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (124,30,11,'La torre Eiffel','cuadro124')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (125,30,2,'Un baño en Asnieres','cuadro125')");
-        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (126,30,10,'The Channel of Gravelines, Petit Fort Philippe','cuadro126')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (126,30,11,'The Channel of Gravelines, Petit Fort Philippe','cuadro126')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (127,7,1,'La toilette','cuadro127')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (128,7,1,'Monsieur Fourcade','cuadro128')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (129,7,1,'Cama el beso ','cuadro129')");
@@ -285,7 +300,8 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (185,43,5,'The Voice of Space','cuadro185')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (186,44,5,'Muchacha en la ventana','cuadro186')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (187,44,5,'Los elefantes','cuadro187')");
-        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (188,44,5,'sueÑo causado por el vuelo de una abeja alrededor de una granada un segundo antes del despertar gala y tigres','cuadro188')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (188,44,5,'sueño causado por el vuelo de una abeja alrededor de una granada un segundo antes del despertar gala y tigres','cuadro188')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (189,44,5,'mujer frente a la ventana','cuadro189')");
 
 
         //Insertamos los datos en la tabla configuracion
