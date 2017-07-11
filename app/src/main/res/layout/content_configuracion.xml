@@ -159,7 +159,7 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imageView6"
+                android:id="@+id/imageView16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/copy" />
@@ -216,20 +216,8 @@
                 android:layout_weight="1"
                 android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/textView_tipo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:autoText="false"
-                    android:paddingBottom="5dp"
-                    android:paddingLeft="5dp"
-                    android:text="@string/app_name"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="18sp" />
-
                 <Button
                     android:id="@+id/button"
-                    style="@android:style/Widget.Material.Button.Colored"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
@@ -284,9 +272,9 @@
                     android:paddingRight="5dp"
                     android:paddingTop="5dp"
                     android:text="@string/Idioma_AcercaDeTexto"
-                    android:textAlignment="center"
+                    android:textAlignment="viewStart"
                     android:textAppearance="@style/TextAppearance.AppCompat"
-                    android:textSize="24sp" />
+                    android:textSize="10sp" />
             </LinearLayout>
         </LinearLayout>
 
