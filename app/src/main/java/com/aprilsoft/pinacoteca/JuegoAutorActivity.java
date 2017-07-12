@@ -41,9 +41,14 @@ public class JuegoAutorActivity extends AppCompatActivity {
     int numeroDePreguntas;
     String TipoJuego;
     String DificultadJuego;
+    String CuentaAtras;
     Configuracion Conf ;
     boolean PuedoPulsar = true;
+    // Cronómetro de la aplicación.
+    private CountDownTimer timer;
 
+    //Controles de la aplicacion
+    TextView txtViev_Timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +82,10 @@ public class JuegoAutorActivity extends AppCompatActivity {
 
     public void PreparaTablero(){
 
+
+        //cargo los controles
+        txtViev_Timer = (TextView) findViewById(R.id.txtVievTimer);
+
         Util utilidades = new Util();
 
         //inicializamos variables de configuracion
@@ -89,6 +98,7 @@ public class JuegoAutorActivity extends AppCompatActivity {
         numeroDePreguntas = Conf.getPreguntas();
         TipoJuego = Conf.getTipo();
         DificultadJuego = Conf.getDificultad();
+        CuentaAtras = Conf.getTiempo();
 
         //cargar un array de TODAS las obras
         CatalogoObras   = CargarObras();
@@ -117,6 +127,7 @@ public class JuegoAutorActivity extends AppCompatActivity {
                 tarea.putExtra("aciertos", String.valueOf(aciertos));
                 tarea.putExtra("preguntas", String.valueOf(numeroDePreguntas));
 
+                if(CuentaAtras.equals("SI"))timer.cancel();
                 startActivity(tarea);
 
             }else{
@@ -138,7 +149,6 @@ public class JuegoAutorActivity extends AppCompatActivity {
 
                 switch (TipoJuego) {
                     case "AUTOR":
-
                         JuegoxAutor();
                         break;
                     case "TITULO":
@@ -158,6 +168,15 @@ public class JuegoAutorActivity extends AppCompatActivity {
                 //el indice de la pregunta x/total
                 TextView textView_estado = (TextView) findViewById(R.id.textView_preguntaActualTotal);
                 textView_estado.setText((indiceActual+1) + "/" + numeroDePreguntas);
+
+                if(CuentaAtras.equals("SI")){
+                    cuentaatras(11);
+                    // Una vez configurado el timer, lo iniciamos.
+                    timer.start();
+                }else{
+                    txtViev_Timer.setText("");
+                }
+
             }
 
 
@@ -207,16 +226,18 @@ public class JuegoAutorActivity extends AppCompatActivity {
                 break;
         }
 
-
-
         PuedoPulsar = false;
+
+        if(CuentaAtras.equals("SI")){
+            timer.cancel();
+        }
 
         if (AutorSeleccionado.equals(Autor_Estilo_Titulo_Real)) {
             BotonSeleccionado.setBackgroundColor(ContextCompat.getColor(this, R.color.cellColor256));
             aciertos++;
         }else {
             BotonSeleccionado.setBackgroundColor(ContextCompat.getColor(this, R.color.lightUpRectangle));
-            Toast.makeText(this, "oohhhh !!!", Toast.LENGTH_SHORT).show();
+            if(CuentaAtras.equals("NO")) Toast.makeText(this, "oohhhh !!!", Toast.LENGTH_SHORT).show();
             errores++;
         }
 
@@ -604,15 +625,27 @@ public class JuegoAutorActivity extends AppCompatActivity {
 
     public void cuentaatras(int seconds){
 
-//        timer = new CountDownTimer(secondsUntilFinished, 1000) {
-//            public void onTick(long millisUntilFinished) {
-//                // Do something every second
-//            }
-//
-//            @Override
-//            public void onFinish() {
-//                // Do something when finished
-//            }
-//        }.start();
+        timer = new CountDownTimer(seconds * 1000, 100) {
+
+            @Override
+            public void onTick(long millisUntilFinished) {
+                // Este método se lanza por cada lapso de tiempo transcurrido,
+                txtViev_Timer.setText(String.valueOf(millisUntilFinished / 1000));
+                if((millisUntilFinished / 1000)<=3){
+                    txtViev_Timer.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.lightUpRectangle));
+                }else{
+                    txtViev_Timer.setTextColor(ContextCompat.getColor(getBaseContext(), R.color.colorAccent));
+                }
+            }
+
+            @Override
+            public void onFinish() {
+                //txtViev_Timer.setText("FIN TIEMPO");
+                //nueva pregunta
+                timer.cancel();
+                delay(1);
+            }
+        };
+
     }
 }
