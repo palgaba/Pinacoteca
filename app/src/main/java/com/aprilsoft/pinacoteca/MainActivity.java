@@ -20,9 +20,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        boolean EliminarBBDD = false;
+        boolean EliminarBBDD = true;
 
-        //eliminar la base de datos de prieba en modo desarrollo
+        //eliminar la base de datos de prueba en modo desarrollo
         if (EliminarBBDD) {
             String DB_PATH = "/data/user/0/com.aprilsoft.pinacoteca/databases/";
             String myPath = DB_PATH + "BBDD";

@@ -26,44 +26,51 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         //Creamos tablas
-        db.execSQL("create table Estilos(id integer primary key, nombre text)");
+        db.execSQL("create table Estilos(id integer primary key, nombre text, descripcion text, grupo text)");
         db.execSQL("create table Autores(id integer primary key, nombre text, idEstilo integer)");
         db.execSQL("create table Cuadros(id integer primary key, idAutor integer, idEstilo int, titulo text, imagen text)");
         db.execSQL("create table Configuracion(id integer primary key, NumeroPreguntas integer, Dificultad text, tipo text, tiempo text)");
 
         //Insertamos los datos en la tabla Estilo
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (0,'Abstracto')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (1,'Posimpresionismo')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (2,'Impresionista')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (3,'Realismo')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (4,'Cubismo')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (5,'Susrealismo')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (6,'Realismo americano')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (7,'Luminismo')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (8,'Regionalismo americano')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (9,'Abstracto lirico')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (10,'Arte Naif')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (11,'Puntillismo')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (12,'Expresionismo')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (0,'Abstracto','Se aparta de la realidad de la representación figurativa, que es sustituida por un lenguaje visual autónomo de significado propio. Sin imitar modelos o formas naturales, profundiza en los aspectos formales, estructurales y cromáticos','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (1,'Posimpresionismo','Se buscaba darle más expresión a las pinturas, con colores de más intensidad.','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (2,'Impresionista','El objetivo predominante era plasmar lo mejor posible el efecto de la luz en lo elegido a retratar (un modo usado era entrecerrar los ojos al observar mientras se pintaba).','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (3,'Realismo','Muestra la realidad objetiva en general','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (4,'Cubismo','El nombre fue dado porque en ciertas pinturas anteriores (al pintar con espátulas), aparecían como pequeños cubos. En seguida, aprovechando formas geométricas (a veces hasta con collages) y con el uso de colores neutros, más la falta de perspectiva y con muchos ángulos de visión del mismo objeto nació este estilo','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (5,'Susrealismo','Se busca representar trasladando las imágenes oníricas de manera mentalmente libre sin la participación de la conciencia (automatismo). La forma de representación es libre.','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (6,'Realismo americano','Muestra la realidad objetiva en general','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (7,'Luminismo','El objetivo predominante era plasmar lo mejor posible el efecto de la luz','')");
+      //  db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (8,'Regionalismo americano','Muestra la realidad objetiva en general','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (9,'Abstracto lirico','expresión de la emoción pictórica del artista, individual e inmediata. Rechazan representar la realidad de forma objetiva.','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (10,'Arte Naif','Pinturas de estilo infantil, sin utilización de técnica. Obras cargadas de ingenuidad.','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (11,'Puntillismo','Técnica impresionista consistente en la yuxtaposición de los colores sobre el lienzo, de modo que producen un nuevo tono al fundirse en la retina del espectador.','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (12,'Expresionismo','Su objetivo primordial era transmitir los sentimientos más profundos del artísta. La diferencia con el Fauvismo, es que usaban más variedad de colores al reflejar el mundo de modo realista y con fidelidad. La emoción debía ser expresada, dejando fluir libremente la inspiración del artísta.','')");
 
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (13,'Neoclasicismo')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (14,'Romanticismo')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (15,'Realismo')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (16,'Simbolismo')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (17,'Art Nouveau')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (18,'Art Decó')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (19,'Fovismo')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (20,'Dadaísmo')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (21,'Pop art')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (22,'Hiperrealismo')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (23,'Renacimiento')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (24,'Manierismo')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (25,'Barroco')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (26,'Rococó')");
-        db.execSQL("INSERT INTO Estilos (id, nombre) VALUES (27,'Arte Retro')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (13,'Neoclasicismo','Tiene la característica de situar a los personajes en forma central y siempre evocando a la mitología clásica','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (14,'Romanticismo','Se basa en representar la obra dando énfasis al sentimiento','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (15,'Futurismo','Máquina y Movimiento, son fundamentales en este estilo. Trataban de retratar algo así como una foto movida, ya sea haciéndolo por partes, pero siempre logrando dar la sensación de movimiento','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (16,'Simbolismo','','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (17,'Art Nouveau','Con diseños de gran delicadeza en torno a una figura femenina. De gran importancia fundamentalmente, en las Artes Gráficas','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (18,'Art Decó','revela una mezcla variada de geometría, simplicidad y abstracción combinadas con colores vibrantes y simples, todo ello sin apartarse de la tradición pictórica, sino combinándose con ella.Las líneas del Art Deco son rectas y angulares, pero también curvadas, circulares y ovales,figuras geométricas como el hexágono y el pentágono','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (19,'Fovismo','Tomando como referencia pinturas de Gauguin, nació el estilo, que representaba de manera más expresiva en relación a los colores (muy intensos y con mucho uso del verde en su mayoría) y con poco dibujo. Dicho estilo, vino de la mano de Henri Matisse','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (20,'Dadaísmo','Antiarte, nacido en símbolo de protesta hacia un orden establecido que se daba en la literatura básicamente. Su máximo exponente: Marcel Duchamp.','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (21,'Pop art','se caracteriza por el empleo de imágenes de la cultura popular tomadas de los medios de comunicación, tales como anuncios publicitarios, comic books, objetos culturales «mundanos» y del mundo del cine. El arte pop, como la música pop, buscaba utilizar imágenes populares en oposición a la elitista cultura existente en las Bellas Artes, separándolas de su contexto y aislándolas o combinándolas con otras,1 además de resaltar el aspecto banal o kitsch de algún elemento cultural, a menudo a través del uso de la ironía.','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (22,'Hiperrealismo','','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (23,'Renacimiento','','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (24,'Manierismo','','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (25,'Barroco','Se dijeron muchas cosas de este estilo, pero lo que predominó es el tema sobre el exceso de ornamentación','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (26,'Rococó','','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (27,'Arte Retro','','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (28,'Naturalismo','Así se consideraba el trabajo de Caravaggio. Su postura era más teatral, invitaba al espectador a ser parte de la obra.','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (29,'Abstracto Expresiva','Subjetiva y espontánea. Métodos de creación impulsivos e improvisados. Expresividad en los elementos visuales. Capacidad sensitiva y expresiva de la factura y materiales artísticos. Composición asistemática y falta de estructura. Vaguedad, ambigüedad y sugestiidad','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (30,'Abstracto Geometrica','Objetiva y universal. Planificación de la obra sobre principios racionales, previa a la creación. Prohíbe la expresividad de los elementos visuales, defendiendo el uso de los elementos neutrales, normalmente geométricos\n" +
+                "Elimina la capacidad sensitiva y expresiva de los materiales, defiende una factura impersonal. Composición sistemática y lógicamente estructural. Claridad, precisión y objetividad','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (31,'Neoimpresionismo','Similar al Impresionismo, pero con la técnica de puntillismo.','')");
+
+
 
         //Insertamos los datos en la tabla Autores
-        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (0,'Pablo Picasso',0)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (0,'Pablo Picasso',4)");
         db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (1,'Vincent Van Gogh',1)");
         db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (2,'Pierre-Auguste Renoir',2)");
         db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (3,'Claude Monet',2)");
@@ -108,6 +115,17 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (42,'Maurits Cornelis Esche',5)");
         db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (43,'René Magritte',5)");
         db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (44,'Salvador Dalí',5)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (45,'Emile Claus',7)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (46,'Évariste Carpentier',7)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (47,'Ferdinand Hart Nibbrig',7)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (48,'Wahbi al-Hariri',7)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (49,'Fitz Hugh Lane',7)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (50,'Martin Johnson Heade',7)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (51,'James Augustus Suydam',7)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (52,'Georges Braque',4)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (53,'Juan Gris',4)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (54,'Ludorff Gerhard Richter',0)");
+
 
 
         //Insertamos los datos en la tabla Cuadros/Obras
@@ -123,8 +141,8 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (9,1,1,'Autorretrato','cuadro009')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (10,1,1,'La Noche Estrellada','cuadro010')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (11,2,2,'Los paraguas','cuadro011')");
-        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (12,13,9,'Several Circles','cuadro012')");
-        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (13,13,9,'Composición Ocho','cuadro013')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (12,13,0,'Several Circles','cuadro012')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (13,13,0,'Composición Ocho','cuadro013')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (14,2,2,'Baile en el Moulin de la Galette','cuadro014')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (15,2,2,'By the Seashore','cuadro015')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (16,2,2,'Oarsmen at Chatou','cuadro016')");
@@ -189,15 +207,15 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (73,19,6,'El mundo de Cristina','cuadro073')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (74,20,6,'Alien Street','cuadro074')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (75,20,6,'Madison square','cuadro075')");
-        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (76,21,8,'Gótico americano','cuadro076')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (76,21,6,'Gótico americano','cuadro076')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (77,19,6,'Winter','cuadro077')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (78,22,6,'Mcsorley s bar','cuadro078')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (79,23,6,'Paisaje americano','cuadro079')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (80,24,6,'Nieve New York','cuadro080')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (81,25,6,'East river park','cuadro081')");
-        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (82,13,9,'Composicion 8','cuadro082')");
-        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (83,13,9,'Estudio color cuadrados','cuadro083')");
-        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (84,13,9,'lineas transversas','cuadro084')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (82,13,0,'Composicion 8','cuadro082')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (83,13,0,'Estudio color cuadrados','cuadro083')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (84,13,0,'lineas transversas','cuadro084')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (85,26,5,'cantante melancolico','cuadro085')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (86,26,5,'mujer pajaros amanecer','cuadro086')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (87,26,10,'La masia','cuadro087')");
@@ -301,7 +319,38 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (186,44,5,'Muchacha en la ventana','cuadro186')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (187,44,5,'Los elefantes','cuadro187')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (188,44,5,'sueño causado por el vuelo de una abeja alrededor de una granada un segundo antes del despertar gala y tigres','cuadro188')");
-        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (189,44,5,'mujer frente a la ventana','cuadro189')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (189,45,7,'Young peasant women at the leie','cuadro189')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (190,45,7,'canal in zeeland','cuadro190')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (191,45,7,'The Old Gardener','cuadro191')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (192,45,7,'le pique nique','cuadro192')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (193,45,7,'Sunset over Waterloo Bridge','cuadro193')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (194,45,7,'Dans la Prairie','cuadro194')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (195,45,7,'Autorretrato','cuadro195')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (196,45,7,'La Faneuse','cuadro196')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (197,45,7,'Sunny Day','cuadro197')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (198,46,7,'Conversation intime','cuadro198')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (199,46,7,'girl with watering can','cuadro199')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (200,46,7,'the little goatherd','cuadro200')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (201,47,7,'Gezicht op zoutlande','cuadro201')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (202,47,7,'El valle Rummel en Constantine, Argelia','cuadro202')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (203,48,7,'capitol watercolor','cuadro203')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (204,49,7,'Brace s Rock, Eastern Point, Gloucester','cuadro204')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (205,50,7,'Newburyport Meadows','cuadro205')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (206,51,7,'Long Island','cuadro206')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (207,52,4,'Botella y peces','cuadro207')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (208,52,4,'Casas en L Estaque','cuadro208')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (209,52,4,'Hombre con guitarra','cuadro209')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (210,52,4,'Plato de frutas y vaso','cuadro210')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (211,53,4,'Botellas cuchillo','cuadro211')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (212,53,4,'Guitar on a table','cuadro212')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (213,53,4,'The Musician s Table','cuadro213')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (214,53,4,'Retrato de Pablo Picasso','cuadro214')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (215,53,4,'Guitarra sobre una silla','cuadro215')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (216,54,0,'Abstract Painting 780-1','cuadro216')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (217,54,0,'ludorff','cuadro217')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (218,54,0,'mediation','cuadro218')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (219,54,0,'station','cuadro219')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (220,54,0,'A.B. Courbet','cuadro220')");
 
 
         //Insertamos los datos en la tabla configuracion

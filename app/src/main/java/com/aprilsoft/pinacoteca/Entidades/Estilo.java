@@ -9,6 +9,26 @@ public class Estilo {
     private int IdEstilo;
     private String nombre;
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getGrupo() {
+        return grupo;
+    }
+
+    public void setGrupo(String grupo) {
+        this.grupo = grupo;
+    }
+
+    private String descripcion;
+    private String grupo;
+
+
     public Estilo() {
     }
 

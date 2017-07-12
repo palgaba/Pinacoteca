@@ -43,10 +43,29 @@ public class CatalogoActivity extends AppCompatActivity {
 
         Cursor fila = bd.rawQuery(consultaSQL , null);
 
-
         //Nos aseguramos de que existe al menos un registro
         if (fila.moveToFirst()) {
             Salida +="Total Obra:" +  fila.getInt(0) + "\n";
+        }
+
+
+        consultaSQL  = " SELECT cEstilo,count(cAutor) FROM ";
+        consultaSQL += " (SELECT Estilos.nombre as cEstilo, Autores.nombre AS cAutor";
+        consultaSQL += " FROM (Cuadros INNER JOIN Autores ON Cuadros.idAutor = Autores.id) ";
+        consultaSQL += " INNER JOIN Estilos ON Cuadros.idEstilo = Estilos.id";
+        consultaSQL += " GROUP BY Estilos.nombre, Autores.nombre)";
+        consultaSQL += " GROUP BY cEstilo";
+
+        fila = bd.rawQuery(consultaSQL , null);
+
+        Salida +="------ Suma de Autores x estilo--------\n";
+        //Nos aseguramos de que existe al menos un registro
+        if (fila.moveToFirst()) {
+            //Recorremos el cursor hasta que no haya más registros
+            do {
+                Salida += fila.getString(0) + ": "+ fila.getString(1)+"\n";
+            } while(fila.moveToNext());
+
         }
 
         fila.close();
@@ -71,7 +90,7 @@ public class CatalogoActivity extends AppCompatActivity {
 
         Cursor fila = bd.rawQuery(consultaSQL , null);
 
-
+        Salida +="------ Suma de cuadros x estilo--------\n";
         //Nos aseguramos de que existe al menos un registro
         if (fila.moveToFirst()) {
 
@@ -107,6 +126,7 @@ public class CatalogoActivity extends AppCompatActivity {
 
         Cursor fila = bd.rawQuery(consultaSQL , null);
 
+        Salida +="------ cuenta de cuadros x autor --------\n";
         //Nos aseguramos de que existe al menos un registro
         if (fila.moveToFirst()) {
 

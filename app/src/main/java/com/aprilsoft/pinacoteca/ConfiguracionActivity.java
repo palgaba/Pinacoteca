@@ -14,6 +14,7 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.aprilsoft.pinacoteca.Entidades.Configuracion;
+import com.aprilsoft.pinacoteca.Entidades.Estilo;
 
 /**
  * Created by palgaba on 04/07/2017.
@@ -249,6 +250,11 @@ public class ConfiguracionActivity extends AppCompatActivity {
 
     public void CatalogoEstadisticas (View v){
         Intent tarea= new Intent(this,CatalogoActivity.class);
+        startActivity(tarea);
+    }
+
+    public void EstiloEstadisticas (View v){
+        Intent tarea= new Intent(this,Estilos.class);
         startActivity(tarea);
     }
 
