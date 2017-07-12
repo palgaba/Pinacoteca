@@ -29,44 +29,62 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("create table Estilos(id integer primary key, nombre text, descripcion text, grupo text)");
         db.execSQL("create table Autores(id integer primary key, nombre text, idEstilo integer)");
         db.execSQL("create table Cuadros(id integer primary key, idAutor integer, idEstilo int, titulo text, imagen text)");
+        db.execSQL("create table AutorEstilos(id integer primary key, idAutor integer, idEstilo int)");
         db.execSQL("create table Configuracion(id integer primary key, NumeroPreguntas integer, Dificultad text, tipo text, tiempo text)");
 
         //Insertamos los datos en la tabla Estilo
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (0,'Abstracto','Se aparta de la realidad de la representación figurativa, que es sustituida por un lenguaje visual autónomo de significado propio. Sin imitar modelos o formas naturales, profundiza en los aspectos formales, estructurales y cromáticos','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (1,'Posimpresionismo','Se buscaba darle más expresión a las pinturas, con colores de más intensidad.','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (2,'Impresionista','El objetivo predominante era plasmar lo mejor posible el efecto de la luz en lo elegido a retratar (un modo usado era entrecerrar los ojos al observar mientras se pintaba).','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (3,'Realismo','Muestra la realidad objetiva en general','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (4,'Cubismo','El nombre fue dado porque en ciertas pinturas anteriores (al pintar con espátulas), aparecían como pequeños cubos. En seguida, aprovechando formas geométricas (a veces hasta con collages) y con el uso de colores neutros, más la falta de perspectiva y con muchos ángulos de visión del mismo objeto nació este estilo','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (5,'Susrealismo','Se busca representar trasladando las imágenes oníricas de manera mentalmente libre sin la participación de la conciencia (automatismo). La forma de representación es libre.','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (6,'Realismo americano','Muestra la realidad objetiva en general','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (7,'Luminismo','El objetivo predominante era plasmar lo mejor posible el efecto de la luz','')");
-      //  db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (8,'Regionalismo americano','Muestra la realidad objetiva en general','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (9,'Abstracto lirico','expresión de la emoción pictórica del artista, individual e inmediata. Rechazan representar la realidad de forma objetiva.','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (10,'Arte Naif','Pinturas de estilo infantil, sin utilización de técnica. Obras cargadas de ingenuidad.','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (11,'Puntillismo','Técnica impresionista consistente en la yuxtaposición de los colores sobre el lienzo, de modo que producen un nuevo tono al fundirse en la retina del espectador.','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (12,'Expresionismo','Su objetivo primordial era transmitir los sentimientos más profundos del artísta. La diferencia con el Fauvismo, es que usaban más variedad de colores al reflejar el mundo de modo realista y con fidelidad. La emoción debía ser expresada, dejando fluir libremente la inspiración del artísta.','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (0,'Abstracto','Se aparta de la realidad de la representación figurativa, que es sustituida por un lenguaje visual autónomo de significado propio. Sin imitar modelos o formas naturales, profundiza en los aspectos formales, estructurales y cromáticos','geometrico')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (1,'Posimpresionismo','Colores Vivos como el impresionismo, pero buscaba darle más expresión a las pinturas, con colores de más intensidad. Son temas de la vida real y presentaron una visión más subjetiva del mundo','colores')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (2,'Impresionista','El objetivo predominante era plasmar lo mejor posible el efecto de la luz en lo elegido a retratar (un modo usado era entrecerrar los ojos al observar mientras se pintaba).','colores')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (3,'Realismo','Muestra la realidad objetiva en general y crear cierta tensión emocional sin llevar a cabo ninguna idealización.','colores')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (4,'Cubismo','Descomposición de la realidad en figuras geométricas. y con el uso de colores neutros, más la falta de perspectiva y con muchos ángulos de visión del mismo objeto','geometrico')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (5,'Susrealismo','Se busca representar trasladando las imágenes oníricas de manera mentalmente libre sin la participación de la conciencia (automatismo). La forma de representación es libre.','geometrico')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (6,'Realismo americano','Como el Realismo, muestra la realidad objetiva en general pero ubicado en America','colores')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (7,'Luminismo','Es impresionismo donde el objetivo predominante era plasmar lo mejor posible el efecto de la luz','colores')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (8,'Gótico','La pintura gótica dejó de ser mural para pasar a retablos situados en los altares de las iglesias, y empezó a desarrollarse la pintura en lienzo, al temple o al óleo.','clasico')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (9,'Abstracto lirico','Expresión de la emoción pictórica del artista, individual e inmediata. Rechazan representar la realidad de forma objetiva.','geometrico')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (10,'Arte Naif','Pinturas de estilo infantil, sin utilización de técnica. Obras cargadas de ingenuidad.','colores')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (11,'Puntillismo','Técnica impresionista consistente en la yuxtaposición de los colores sobre el lienzo, de modo que producen un nuevo tono al fundirse en la retina del espectador.','colores')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (12,'Expresionismo','Su objetivo primordial era transmitir los sentimientos más profundos del artísta. La diferencia con el Fauvismo, es que usaban más variedad de colores al reflejar el mundo de modo realista y con fidelidad. La emoción debía ser expresada, dejando fluir libremente la inspiración del artísta.','colores')");
 
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (13,'Neoclasicismo','Tiene la característica de situar a los personajes en forma central y siempre evocando a la mitología clásica','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (14,'Romanticismo','Se basa en representar la obra dando énfasis al sentimiento','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (15,'Futurismo','Máquina y Movimiento, son fundamentales en este estilo. Trataban de retratar algo así como una foto movida, ya sea haciéndolo por partes, pero siempre logrando dar la sensación de movimiento','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (16,'Simbolismo','','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (17,'Art Nouveau','Con diseños de gran delicadeza en torno a una figura femenina. De gran importancia fundamentalmente, en las Artes Gráficas','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (18,'Art Decó','revela una mezcla variada de geometría, simplicidad y abstracción combinadas con colores vibrantes y simples, todo ello sin apartarse de la tradición pictórica, sino combinándose con ella.Las líneas del Art Deco son rectas y angulares, pero también curvadas, circulares y ovales,figuras geométricas como el hexágono y el pentágono','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (19,'Fovismo','Tomando como referencia pinturas de Gauguin, nació el estilo, que representaba de manera más expresiva en relación a los colores (muy intensos y con mucho uso del verde en su mayoría) y con poco dibujo. Dicho estilo, vino de la mano de Henri Matisse','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (20,'Dadaísmo','Antiarte, nacido en símbolo de protesta hacia un orden establecido que se daba en la literatura básicamente. Su máximo exponente: Marcel Duchamp.','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (21,'Pop art','se caracteriza por el empleo de imágenes de la cultura popular tomadas de los medios de comunicación, tales como anuncios publicitarios, comic books, objetos culturales «mundanos» y del mundo del cine. El arte pop, como la música pop, buscaba utilizar imágenes populares en oposición a la elitista cultura existente en las Bellas Artes, separándolas de su contexto y aislándolas o combinándolas con otras,1 además de resaltar el aspecto banal o kitsch de algún elemento cultural, a menudo a través del uso de la ironía.','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (22,'Hiperrealismo','','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (23,'Renacimiento','','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (24,'Manierismo','','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (25,'Barroco','Se dijeron muchas cosas de este estilo, pero lo que predominó es el tema sobre el exceso de ornamentación','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (26,'Rococó','','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (27,'Arte Retro','','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (28,'Naturalismo','Así se consideraba el trabajo de Caravaggio. Su postura era más teatral, invitaba al espectador a ser parte de la obra.','')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (13,'Neoclasicismo','Tiene la característica de situar a los personajes en forma central y siempre evocando a la mitología clásica','clasico')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (14,'Romanticismo','Se basa en representar la obra dando énfasis al sentimiento','clasico')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (15,'Futurismo','Máquina y Movimiento, son fundamentales en este estilo. Trataban de retratar algo así como una foto movida, ya sea haciéndolo por partes, pero siempre logrando dar la sensación de movimiento','geometrico')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (16,'Simbolismo','Abandonan los temas cotidianos por los contenidos simbólicos y conceptuale','neutro')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (17,'Art Nouveau','Con diseños de gran delicadeza en torno a una figura femenina, con un tratamiento erótico, se alejan de la figuración para centrarse en el mero adorno, muy cerca del diseño industrial','geometrico')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (18,'Art Decó','Revela una mezcla variada de geometría, simplicidad y abstracción combinadas con colores vibrantes y simples, todo ello sin apartarse de la tradición pictórica, sino combinándose con ella. \nLas líneas del Art Deco son rectas y angulares, pero también curvadas, circulares y ovales, figuras geométricas como el hexágono y el pentágono','geometrico')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (19,'Fauvismo','Representaba de manera más expresiva en relación a los colores muy intensos y con mucho uso del verde en su mayoría, y con poco dibujo.','colores')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (20,'Dadaísmo','Antiarte, nacido en símbolo de protesta hacia un orden establecido que se daba en la literatura básicamente. Su máximo exponente: Marcel Duchamp.','geometrico')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (21,'Pop art','se caracteriza por el empleo de imágenes de la cultura popular tomadas de los medios de comunicación, tales como anuncios publicitarios, comic books, objetos culturales «mundanos» y del mundo del cine. El arte pop, como la música pop, buscaba utilizar imágenes populares en oposición a la elitista cultura existente en las Bellas Artes, separándolas de su contexto y aislándolas o combinándolas con otras,1 además de resaltar el aspecto banal o kitsch de algún elemento cultural, a menudo a través del uso de la ironía.','neutro')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (22,'Hiperrealismo','El hiperrealismo es considerado un avance del fotorealismo por los métodos utilizados','neutro')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (23,'Renacimiento','Los artistas se inspiraron en el arte clásico grecorromano, por lo que se habló de «renacimiento» artístico tras el oscurantismo medieval. Estilo inspirado en la naturaleza, surgieron nuevos modelos de representación, como el uso de la perspectiva. Sin renunciar a la temática religiosa, cobró mayor relevancia la representación del ser humano y su entorno, apareciendo nuevas temáticas como la mitológica o la histórica, o nuevos géneros como el paisaje, el bodegón e, incluso, el desnudo. La belleza dejó de ser simbólica, como en la era medieval, para tener un componente más racional y mesurado, sobre la base de la armonía y la proporción.','clasico')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (24,'Manierismo','parte última del Renacimiento (es decir, un Bajo Renacimiento). Su caracterización es problemática','clasico')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (25,'Barroco','Se dijeron muchas cosas de este estilo, pero lo que predominó es el tema sobre el exceso de ornamentación','clasico')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (26,'Rococó','Individualista, antiformalista y cortesano. Se caracteriza por el gusto por los colores luminosos, suaves y claros.','clasico')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (27,'Neofiguración','Una vuelta a la pintura figurativa frente a la abstracción, aunque los pintores tratan el tema de una manera informal y expresionista.','neutro')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (28,'Minimalista','Las diferentes formas están reducidas a estados mínimos de orden y complejidad desde el punto de vista morfológico.','geometrico')");
         db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (29,'Abstracto Expresiva','Subjetiva y espontánea. Métodos de creación impulsivos e improvisados. Expresividad en los elementos visuales. Capacidad sensitiva y expresiva de la factura y materiales artísticos. Composición asistemática y falta de estructura. Vaguedad, ambigüedad y sugestiidad','')");
         db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (30,'Abstracto Geometrica','Objetiva y universal. Planificación de la obra sobre principios racionales, previa a la creación. Prohíbe la expresividad de los elementos visuales, defendiendo el uso de los elementos neutrales, normalmente geométricos\n" +
-                "Elimina la capacidad sensitiva y expresiva de los materiales, defiende una factura impersonal. Composición sistemática y lógicamente estructural. Claridad, precisión y objetividad','')");
-        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (31,'Neoimpresionismo','Similar al Impresionismo, pero con la técnica de puntillismo.','')");
+                "Elimina la capacidad sensitiva y expresiva de los materiales, defiende una factura impersonal. Composición sistemática y lógicamente estructural. Claridad, precisión y objetividad','geometrico')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (31,'Neoimpresionismo','Evolucionando desde el impresionismo, pero con la técnica de puntillismo.','colores')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (32,'Fotorrealismo','Se basa en hacer un cuadro a partir de una fotografía, considerada una variante del hiperrealismo.','neutro')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (33,'Op-art','En las obras de op art el observador participa activamente moviéndose o desplazándose para poder captar el efecto óptico completamente, por lo tanto se puede decir que no existe ningún aspecto emocional en las obras','neutro')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (34,'Neo-pop','Un paso mas lejos que el Pop art debido a la disponibilidad de imágenes mediáticas desde el pop-art ha crecido exponencialmente','neutro')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (35,'Constructivismo ','Incorpora a la obra artística los conceptos de espacio y tiempo, a fin de conseguir formas dinámicas (Rusia).\n Predominio de la tridimensionalidad y las líneas inclinadas, también, poseían motivos abstractos, utilizaban formas geométricas y lineales.','geometrico')");
+        db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (36,'Suprematismo ','Abstracción geométrica y el arte abstracto, en búsqueda de la supremacía de la nada y la representación del universo sin objetos. El suprematismo rechazaba el arte convencional buscando la pura sensibilidad a través de la abstracción geométrica. Surgió en forma paralela al constructivismo.','geometrico')");
 
+
+
+
+
+        //los autores suelen tener mas de un estilo pictorico
+        db.execSQL("INSERT INTO AutorEstilos (id, idAutor, idEstilo) VALUES (0,0,4)"); //Cubismo,
+        db.execSQL("INSERT INTO AutorEstilos (id, idAutor, idEstilo) VALUES (1,0,5)"); //Surrealismo
+        db.execSQL("INSERT INTO AutorEstilos (id, idAutor, idEstilo) VALUES (2,0,12)");//Expresionismo,
+        db.execSQL("INSERT INTO AutorEstilos (id, idAutor, idEstilo) VALUES (3,1,1)"); //Posimpresionismo
+        db.execSQL("INSERT INTO AutorEstilos (id, idAutor, idEstilo) VALUES (4,1,2)"); //impresionismo
+        db.execSQL("INSERT INTO AutorEstilos (id, idAutor, idEstilo) VALUES (5,1,12)");//Expresionismo,
+        db.execSQL("INSERT INTO AutorEstilos (id, idAutor, idEstilo) VALUES (6,1,19)");//fauvismo,
 
 
         //Insertamos los datos en la tabla Autores
@@ -180,8 +198,6 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (48,16,2,'Nieve en argenteuil','cuadro048')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (49,16,2,'Primera helada','cuadro049')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (50,16,2,'Puente en villeneuve','cuadro050')");
-
-
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (51,15,6,'Atardecer cape cod','cuadro051')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (52,15,6,'Carretera cuatro carriles','cuadro052')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (53,15,6,'Domingo temprano','cuadro053')");
@@ -221,6 +237,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (87,26,10,'La masia','cuadro087')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (88,26,5,'Bodegón del zapato viejo','cuadro088')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (89,26,5,'La sonrisa de alas flameantes','cuadro089')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (90,1,1,'La avenida de los Alyscamps','cuadro090')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (91,26,5,'Carnaval arlequin','cuadro091')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (92,26,0,'Oro azul','cuadro092')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (93,26,10,'La casa de la palmera','cuadro093')");
@@ -351,10 +368,13 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (218,54,0,'mediation','cuadro218')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (219,54,0,'station','cuadro219')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (220,54,0,'A.B. Courbet','cuadro220')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (221,31,1,'Los Alyscamps','cuadro221')");
+
+
 
 
         //Insertamos los datos en la tabla configuracion
-        db.execSQL("INSERT INTO Configuracion (id, NumeroPreguntas, Dificultad, tipo, tiempo ) VALUES (1,12,'FACIL','AUTOR','NO')");
+        db.execSQL("INSERT INTO Configuracion (id, NumeroPreguntas, Dificultad, tipo, tiempo ) VALUES (1,12,'NORMAL','AUTOR','NO')");
 
     }
 
@@ -371,7 +391,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
             db.execSQL("create table Configuracion(id integer primary key, NumeroPreguntas integer, Dificultad text, tipo text, tiempo text)");
 
             //Insertamos los datos en la tabla configuracion
-            db.execSQL("INSERT INTO Configuracion (id, NumeroPreguntas, Dificultad, tipo, tiempo )  VALUES (1,12,'facil','autor','no')");
+            db.execSQL("INSERT INTO Configuracion (id, NumeroPreguntas, Dificultad, tipo, tiempo )  VALUES (1,12,'NORMAL','AUTOR','no')");
 
 
         }

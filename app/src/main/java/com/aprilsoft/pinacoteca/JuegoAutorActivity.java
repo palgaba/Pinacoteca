@@ -6,6 +6,7 @@ import android.content.res.Resources;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.annotation.IntegerRes;
 import android.support.v4.content.ContextCompat;
@@ -82,35 +83,20 @@ public class JuegoAutorActivity extends AppCompatActivity {
         Conf = utilidades.RecuperaConfiguracion(this);
 
         //inicializa varible generales del juego
-        aciertos=0;
-        errores=0;
-        indiceActual=0;
+        aciertos = 0;
+        errores  = 0;
+        indiceActual = 0;
         numeroDePreguntas = Conf.getPreguntas();
         TipoJuego = Conf.getTipo();
-        DificultadJuego= Conf.getDificultad();
+        DificultadJuego = Conf.getDificultad();
 
         //cargar un array de TODAS las obras
-        CatalogoObras = CargarObras();
+        CatalogoObras   = CargarObras();
+        CatalogoAutores = CargarAutores();
+        CatalogoEstilos = CargarEstilos();
 
-        switch (TipoJuego) {
-            case "AUTOR":
-                //lo necesito para escoger mas autores que no son para completar las respuestas
-                CatalogoAutores =  CargarAutores();
-                break;
-            case "TITULO":
-               // CatalogoAutores =  CargarAutores();
-                break;
-            case "ESTILO":
-                CatalogoEstilos = CargarEstilos();
-                break;
-
-            default:
-                break;
-        }
-
-
-        //selecciona aleatoriamente dentro del catalogo n obras
-        listaTemporal=NumeroaAleatoriosSinRepeticion(0,CatalogoObras.size(),numeroDePreguntas,-1);
+        //selecciona aleatoriamente dentro del catalogo de pinturas completo
+        listaTemporal = NumeroaAleatoriosSinRepeticion(0,CatalogoObras.size(),numeroDePreguntas,-1);
 
         //guarda los n obras aleatorias en las obras seleccionadas para preguntar
         for (int i = 0; i < numeroDePreguntas ; i++) {
@@ -152,9 +138,13 @@ public class JuegoAutorActivity extends AppCompatActivity {
 
                 switch (TipoJuego) {
                     case "AUTOR":
+
                         JuegoxAutor();
                         break;
                     case "TITULO":
+                            if(!DificultadJuego.equals("FACIL")){
+                                textView_titulo.setText("");
+                            }
                         JuegoxTitulo();
                         break;
                     case "ESTILO":
@@ -242,6 +232,10 @@ public class JuegoAutorActivity extends AppCompatActivity {
         Obra obraSeleccion = ObrasSeleccionadas.get(indiceActual);
         switch (DificultadJuego) {
             case "FACIL":
+                listaTemporal=NumeroaAleatoriosSinRepeticionMATRIZ(TipoJuego,obraSeleccion);
+                break;
+
+            case "NORMAL":
                 listaTemporal=NumeroaAleatoriosSinRepeticion(0,CatalogoAutores.size(),2,IDAutorReal);
                 break;
 
@@ -275,20 +269,8 @@ public class JuegoAutorActivity extends AppCompatActivity {
 
         //seleciono una triada de autores incluido el correcto, realmente busco solo dos
         //y que sean diferentes del que incluyo dentro del catalogo completo de autores
-        int IDEstiloReal= ObrasSeleccionadas.get(indiceActual).getIdEstilo();
-        switch (DificultadJuego) {
-            case "FACIL":
-                listaTemporal=NumeroaAleatoriosSinRepeticion(0,CatalogoAutores.size(),2,IDEstiloReal);
-                break;
-
-            case "DIFICIL":
-                listaTemporal=NumeroaAleatoriosSinRepeticionMATRIZ(TipoJuego,ObrasSeleccionadas.get(indiceActual));
-                break;
-
-            default:
-                listaTemporal=NumeroaAleatoriosSinRepeticion(0,CatalogoAutores.size(),2,IDEstiloReal);
-                break;
-        }
+        Obra obraSeleccion = ObrasSeleccionadas.get(indiceActual);
+        listaTemporal=NumeroaAleatoriosSinRepeticionMATRIZ(TipoJuego,obraSeleccion);
         listaTemporal = BajaraLista(listaTemporal);
 
         //Escribe los autores en cada boton
@@ -310,7 +292,7 @@ public class JuegoAutorActivity extends AppCompatActivity {
         //seleciono una triada de autores incluido el correcto, realmente busco solo dos
         //y que sean diferentes del que incluyo dentro del catalogo completo de autores
         int iObraReal = ObrasSeleccionadas.get(indiceActual).getId();
-        listaTemporal=NumeroaAleatoriosSinRepeticion(0,CatalogoObras.size(),2,iObraReal);
+        listaTemporal = NumeroaAleatoriosSinRepeticion(0,CatalogoObras.size(),2,iObraReal);
         listaTemporal = BajaraLista(listaTemporal);
 
 
@@ -338,11 +320,11 @@ public class JuegoAutorActivity extends AppCompatActivity {
         String  consultaSQL;
 
         consultaSQL   = " SELECT Cuadros.id, Cuadros.titulo, Cuadros.idAutor, Autores.nombre, Cuadros.idEstilo, Estilos.nombre, Cuadros.imagen ";
-        consultaSQL  += " FROM (Cuadros INNER JOIN Autores ON Cuadros.idAutor = Autores.id) INNER JOIN Estilos ON Cuadros.idEstilo = Estilos.id;";
+        consultaSQL  += " FROM (Cuadros INNER JOIN Autores ON Cuadros.idAutor = Autores.id) INNER JOIN Estilos ON Cuadros.idEstilo = Estilos.id ";
+        consultaSQL  += " ORDER BY Cuadros.id ";
 
         Cursor fila = bd.rawQuery(consultaSQL , null);
-
-        List<Obra> CatalogoObras = new ArrayList<>();
+        List<Obra> CatalogoObrasT =  new ArrayList<>();
 
             //Nos aseguramos de que existe al menos un registro
             if (fila.moveToFirst()) {
@@ -360,12 +342,12 @@ public class JuegoAutorActivity extends AppCompatActivity {
                     Obra_item.setImagen(fila.getString(6));
 
 
-                    CatalogoObras.add(Obra_item);
+                    CatalogoObrasT.add(Obra_item);
 
                 } while(fila.moveToNext());
 
             }
-            return CatalogoObras;
+            return CatalogoObrasT;
     }
 
     private List<Autor> CargarAutores(){
@@ -377,13 +359,12 @@ public class JuegoAutorActivity extends AppCompatActivity {
 
         String  consultaSQL;
 
-        consultaSQL  = " SELECT Autores.id, Autores.nombre, Estilos.nombre ";
-        consultaSQL += " FROM Autores INNER JOIN Estilos ON Autores.idEstilo = Estilos.Id;";
+        consultaSQL   = " SELECT Autores.id, Autores.nombre, Estilos.nombre ";
+        consultaSQL  += " FROM Autores INNER JOIN Estilos ON Autores.idEstilo = Estilos.Id;";
+        consultaSQL  += " ORDER BY Autores.id ";
 
 
         Cursor fila = bd.rawQuery(consultaSQL , null);
-
-        List<Autor> CatalogoAutores = new ArrayList<>();
 
         //Nos aseguramos de que existe al menos un registro
         if (fila.moveToFirst()) {
@@ -419,7 +400,7 @@ public class JuegoAutorActivity extends AppCompatActivity {
 
         Cursor fila = bd.rawQuery(consultaSQL , null);
 
-        List<Estilo> CatalogoEstilos = new ArrayList<>();
+        List<Estilo> CatalogoEstilosT = new ArrayList<>();
 
         //Nos aseguramos de que existe al menos un registro
         if (fila.moveToFirst()) {
@@ -434,35 +415,34 @@ public class JuegoAutorActivity extends AppCompatActivity {
                 estilo_item.setGrupo(fila.getString(3));
 
 
-                CatalogoEstilos.add(estilo_item);
+                CatalogoEstilosT.add(estilo_item);
 
             } while(fila.moveToNext());
 
         }
-        return CatalogoEstilos;
+        return CatalogoEstilosT;
     }
 
     public List<Integer> NumeroaAleatoriosSinRepeticion (int minValor , int maxValor, int elementosDevueltos, int valorExcluido ) {
 
         Integer pos;
-        List<Integer> listaTemporal =  new ArrayList<>();
+        List<Integer> listaTemporalTrabajo =  new ArrayList<>();
 
         if (valorExcluido >=0){
-            pos = valorExcluido;
-            listaTemporal.add(pos);
+            listaTemporalTrabajo.add(valorExcluido);
         }
 
         //numeros aleatorios sin repeticion entre 0..n
         for (int i = 0; i < elementosDevueltos ; i++) {
             pos = (int) Math.floor(Math.random() * maxValor );
-            while (listaTemporal.contains(pos)) {
+            while (listaTemporalTrabajo.contains(pos)) {
                 pos = (int) Math.floor(Math.random() * maxValor );
             }
-            listaTemporal.add(pos);
+            listaTemporalTrabajo.add(pos);
         }
 
 
-        return listaTemporal;
+        return listaTemporalTrabajo;
 
     }
 
@@ -508,7 +488,14 @@ public class JuegoAutorActivity extends AppCompatActivity {
         Integer pos;
         Integer maxValor=2;
         String  consultaSQL="";
-        String GrupooObra="1";
+        String GrupooObra="colores";
+
+        for (Estilo item: CatalogoEstilos) {
+            if (item.getIdEstilo() == cObra.getIdEstilo()){
+                GrupooObra = item.getGrupo();
+                break;
+            }
+        }
 
         //contine todos los id de autores del mismo estilo pictorico
         List<Integer> listaTemporalSeleccion =  new ArrayList<>();
@@ -518,22 +505,39 @@ public class JuegoAutorActivity extends AppCompatActivity {
 
         List<Integer> listaSalida =  new ArrayList<>();
 
-
         //cargar el array con diferentes resultados
         switch (Tipojuego) {
             case "AUTOR":
-                consultaSQL   = " SELECT Autores.id FROM Autores WHERE Autores.idEstilo = " + cObra.getIdEstilo() ;
-                consultaSQL  += " AND Autores.id <> " + cObra.getIdautor();
-                listaSalida.add(cObra.getIdautor());
-                break;
-            case "ESTILO":
-                consultaSQL   = " SELECT Estilos.id FROM Estilos WHERE Estilos.grupo = " + GrupooObra ;
-                consultaSQL  += " AND Estilos.id <> " + cObra.getIdEstilo();
-                listaSalida.add(cObra.getIdEstilo());
+                if(DificultadJuego.equals("FACIL")){
+                    consultaSQL   = " SELECT Autores.id FROM Autores WHERE Autores.idEstilo <> " + cObra.getIdEstilo() ;
+                    consultaSQL  += " AND Autores.id <> " + cObra.getIdautor();
+                    listaSalida.add(cObra.getIdautor());
+                }else if (DificultadJuego.equals("DIFICIL")){
+                    consultaSQL   = " SELECT Autores.id FROM Autores WHERE Autores.idEstilo = " + cObra.getIdEstilo() ;
+                    consultaSQL  += " AND Autores.id <> " + cObra.getIdautor();
+                    listaSalida.add(cObra.getIdautor());
+                }else if(DificultadJuego.equals("NORMAL")){
+                    consultaSQL   = " SELECT Autores.id FROM Autores WHERE Autores.id <> " + cObra.getIdautor();
+                    listaSalida.add(cObra.getIdautor());
+                }
+
                 break;
 
-            default:
+            case "ESTILO":
+                if(DificultadJuego.equals("FACIL")){
+                    consultaSQL   = "  SELECT Estilos.id FROM Estilos WHERE Estilos.grupo <>'" + GrupooObra + "' " ;
+                    consultaSQL  += " AND Estilos.id <> " + cObra.getIdEstilo();
+                    listaSalida.add(cObra.getIdEstilo());
+                }else if (DificultadJuego.equals("DIFICIL")){
+                    consultaSQL   = " SELECT Estilos.id FROM Estilos WHERE Estilos.grupo = '" + GrupooObra + "' " ;
+                    consultaSQL  += " AND Estilos.id <> " + cObra.getIdEstilo();
+                    listaSalida.add(cObra.getIdEstilo());
+                }else if(DificultadJuego.equals("NORMAL")){
+                    consultaSQL   = " SELECT Estilos.id FROM Estilos WHERE Estilos.id <> " + cObra.getIdEstilo();
+                    listaSalida.add(cObra.getIdEstilo());
+                }
                 break;
+
         }
 
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"BBDD", null, AdminSQLiteOpenHelper.DATABASE_VERSION);
@@ -560,7 +564,7 @@ public class JuegoAutorActivity extends AppCompatActivity {
         //numeros aleatorios sin repeticion entre 0..n de listaTemporalSeleccion
         for (int i = 0; i < maxValor ; i++) {
             pos = (int) Math.floor(Math.random() * listaTemporalSeleccion.size() );
-            while (listaTemporal.contains(pos)) {
+            while (listaTemporalindices.contains(pos)) {
                 pos = (int) Math.floor(Math.random() * listaTemporalSeleccion.size() );
             }
             listaTemporalindices.add(pos);
@@ -576,7 +580,6 @@ public class JuegoAutorActivity extends AppCompatActivity {
         return listaSalida;
 
     }
-
 
     public void delay(int seconds){
 
@@ -598,4 +601,18 @@ public class JuegoAutorActivity extends AppCompatActivity {
         });
     }
 
+
+    public void cuentaatras(int seconds){
+
+//        timer = new CountDownTimer(secondsUntilFinished, 1000) {
+//            public void onTick(long millisUntilFinished) {
+//                // Do something every second
+//            }
+//
+//            @Override
+//            public void onFinish() {
+//                // Do something when finished
+//            }
+//        }.start();
+    }
 }

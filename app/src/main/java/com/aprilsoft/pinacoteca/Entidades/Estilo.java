@@ -8,6 +8,8 @@ public class Estilo {
 
     private int IdEstilo;
     private String nombre;
+    private String descripcion;
+    private String grupo;
 
     public String getDescripcion() {
         return descripcion;
@@ -24,10 +26,6 @@ public class Estilo {
     public void setGrupo(String grupo) {
         this.grupo = grupo;
     }
-
-    private String descripcion;
-    private String grupo;
-
 
     public Estilo() {
     }

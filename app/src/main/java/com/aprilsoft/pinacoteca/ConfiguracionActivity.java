@@ -25,7 +25,6 @@ public class ConfiguracionActivity extends AppCompatActivity {
     TextView txt_dificultad;
     TextView txt_tiempo;
     TextView txt_tipo;
-    TextView txt_About;
     EditText Edit_Preguntas;
 
     SeekBar seekBar_dificultad;
@@ -124,8 +123,7 @@ public class ConfiguracionActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 //no puede ser superior al tamaño de la obra
                 String texto = Edit_Preguntas.getText().toString();
-                if(texto.equals("")) texto ="0";
-
+                if(texto.equals("")) texto ="1";
                 int number = Integer.valueOf(texto);
                 if(number > 50) number = 50; //tamaño de l
                 // a obra
