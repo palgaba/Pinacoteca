@@ -29,6 +29,8 @@ import java.util.List;
 
 public class JuegoAutorActivity extends AppCompatActivity {
 
+    private static final String LOGTAG = "LogsAndroid";
+
     int indiceActual;//mantine dentro de la lista
     List<Obra> CatalogoObras =  new ArrayList<>();
     List<Autor> CatalogoAutores =  new ArrayList<>();
@@ -246,6 +248,7 @@ public class JuegoAutorActivity extends AppCompatActivity {
 
     public void JuegoxAutor(){
 
+        Log.d(LOGTAG, "JuegoxAutor");
         //seleciono una triada de autores incluido el correcto, realmente busco solo dos
         //y que sean diferentes del que incluyo dentro del catalogo completo de autores
 
@@ -505,6 +508,7 @@ public class JuegoAutorActivity extends AppCompatActivity {
 
     public List<Integer> NumeroaAleatoriosSinRepeticionMATRIZ(String Tipojuego, Obra cObra ) {
 
+        Log.d(LOGTAG, "NumeroaAleatoriosSinRepeticionMATRIZ");
         //recuperar de una matriz de numeros X valores al azar
         Integer pos;
         Integer maxValor=2;
@@ -561,16 +565,20 @@ public class JuegoAutorActivity extends AppCompatActivity {
 
         }
 
+        Log.d(LOGTAG, Tipojuego + ": " + consultaSQL);
+
         AdminSQLiteOpenHelper admin = new AdminSQLiteOpenHelper(this,"BBDD", null, AdminSQLiteOpenHelper.DATABASE_VERSION);
 
         SQLiteDatabase bd = admin.getReadableDatabase();
 
         Cursor fila = bd.rawQuery(consultaSQL , null);
 
+        Log.d(LOGTAG, "Fila contador: " + fila.getCount());
 
         //Nos aseguramos de que existe al menos un registro
         if (fila.moveToFirst()) {
             //Al menos tre autores de este estilo
+            Log.d(LOGTAG, "Elemento SQL: " +  fila.getCount());
             if (fila.getCount()>=2){
                 //Recorremos el cursor hasta que no haya más registros
                 do {
@@ -579,9 +587,7 @@ public class JuegoAutorActivity extends AppCompatActivity {
             }
         }
 
-        fila.close();
-        bd.close();
-
+        Log.d(LOGTAG, Tipojuego + ": listaTemporalindices");
         //numeros aleatorios sin repeticion entre 0..n de listaTemporalSeleccion
         for (int i = 0; i < maxValor ; i++) {
             pos = (int) Math.floor(Math.random() * listaTemporalSeleccion.size() );
@@ -591,19 +597,23 @@ public class JuegoAutorActivity extends AppCompatActivity {
             listaTemporalindices.add(pos);
         }
 
-        //carlo
 
+        Log.d(LOGTAG, Tipojuego + ": listaSalida");
         for (int k = 0; k < maxValor ; k++) {
             int i = listaTemporalSeleccion.get(listaTemporalindices.get(k));
             listaSalida.add(i);
         }
 
+        Log.d(LOGTAG, Tipojuego + ": return listaSalida");
+
+        fila.close();
+        bd.close();
         return listaSalida;
 
     }
 
     public void delay(int seconds){
-
+      //  Log.d(LOGTAG, "delay");
         final int milliseconds = seconds * 1000;
         runOnUiThread(new Runnable() {
             @Override
@@ -629,6 +639,7 @@ public class JuegoAutorActivity extends AppCompatActivity {
 
             @Override
             public void onTick(long millisUntilFinished) {
+             //   Log.d(LOGTAG, "onTick");
                 // Este método se lanza por cada lapso de tiempo transcurrido,
                 txtViev_Timer.setText(String.valueOf(millisUntilFinished / 1000));
                 if((millisUntilFinished / 1000)<=3){

@@ -15,8 +15,8 @@
                 android:id="@+id/textView_catalogo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:lineSpacingExtra="24sp"
                 android:text="TextView"
+                android:textSize="14sp"
                 tools:layout_editor_absoluteX="35dp"
                 tools:layout_editor_absoluteY="51dp" />
 
