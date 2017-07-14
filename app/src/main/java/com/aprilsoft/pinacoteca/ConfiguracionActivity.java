@@ -30,7 +30,7 @@ public class ConfiguracionActivity extends AppCompatActivity {
     SeekBar seekBar_dificultad;
     SeekBar seekBar_tipo;
     Switch Switch_tiempo;
-
+    Switch Switch_anim;
     Configuracion Conf;
 
     @Override
@@ -46,6 +46,7 @@ public class ConfiguracionActivity extends AppCompatActivity {
         seekBar_dificultad = (SeekBar)findViewById(R.id.seekBar_dificultad);
         txt_tiempo = (TextView)findViewById(R.id.textView_tiempo);
         Switch_tiempo = (Switch) findViewById(R.id.switch1);
+        Switch_anim = (Switch) findViewById(R.id.switch_anim);
         txt_tipo = (TextView)findViewById(R.id.textView_tipo);
         seekBar_tipo = (SeekBar)findViewById(R.id.seekBar2);
 
@@ -88,6 +89,15 @@ public class ConfiguracionActivity extends AppCompatActivity {
             Switch_tiempo.setChecked(false);
             Switch_tiempo.setText(R.string.Idioma_NO);
         }
+        if(Conf.getAnimacion().toUpperCase().equals("SI")){
+            Switch_anim.setChecked(true);
+            Switch_anim.setText(R.string.Idioma_SI);
+        }else{
+            Switch_anim.setChecked(false);
+            Switch_anim.setText(R.string.Idioma_NO);
+        }
+
+
         // SeekBar TIPO
         switch (Conf.getTipo().toUpperCase()) {
             case "AUTOR":
@@ -111,7 +121,6 @@ public class ConfiguracionActivity extends AppCompatActivity {
         Edit_Preguntas.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
             }
 
             @Override
@@ -190,6 +199,27 @@ public class ConfiguracionActivity extends AppCompatActivity {
 
             }
         });
+
+
+        Switch_anim.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if(isChecked){
+                    Switch_anim.setText(R.string.Idioma_SI);
+                    Conf.setAnimacion("SI");
+                }else{
+                    Switch_anim.setText(R.string.Idioma_NO);
+                    Conf.setAnimacion("NO");
+                }
+
+                Utilidades.GuardarConfiguracion(Conf,getBaseContext());
+
+            }
+        });
+
+
 
 
 

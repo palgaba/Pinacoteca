@@ -14,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,6 +32,7 @@ import java.util.List;
 public class JuegoAutorActivity extends AppCompatActivity {
 
     private static final String LOGTAG = "LogsAndroid";
+    boolean pressed=false;
 
     int indiceActual;//mantine dentro de la lista
     List<Obra> CatalogoObras =  new ArrayList<>();
@@ -44,6 +47,7 @@ public class JuegoAutorActivity extends AppCompatActivity {
     String TipoJuego;
     String DificultadJuego;
     String CuentaAtras;
+    String Animacion;
     Configuracion Conf ;
     boolean PuedoPulsar = true;
     // Cronómetro de la aplicación.
@@ -51,6 +55,9 @@ public class JuegoAutorActivity extends AppCompatActivity {
 
     //Controles de la aplicacion
     TextView txtViev_Timer;
+    ImageView MI_imageView;
+    Animation zoomin;
+    Animation zoomout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,8 +92,13 @@ public class JuegoAutorActivity extends AppCompatActivity {
     public void PreparaTablero(){
 
 
-        //cargo los controles
+        //cargo los controles del juego y animaciones de los controles
         txtViev_Timer = (TextView) findViewById(R.id.txtVievTimer);
+        MI_imageView = (ImageView) findViewById(R.id.MI_imageView);
+        zoomin = AnimationUtils.loadAnimation(this, R.anim.zoomin);
+        zoomout = AnimationUtils.loadAnimation(this, R.anim.zoomout);
+        MI_imageView.setAnimation(zoomin);
+        MI_imageView.setAnimation(zoomout);
 
         Util utilidades = new Util();
 
@@ -101,6 +113,7 @@ public class JuegoAutorActivity extends AppCompatActivity {
         TipoJuego = Conf.getTipo();
         DificultadJuego = Conf.getDificultad();
         CuentaAtras = Conf.getTiempo();
+        Animacion = Conf.getAnimacion();
 
         //cargar un array de TODAS las obras
         CatalogoObras   = CargarObras();
@@ -114,6 +127,22 @@ public class JuegoAutorActivity extends AppCompatActivity {
         for (int i = 0; i < numeroDePreguntas ; i++) {
             ObrasSeleccionadas.add(CatalogoObras.get(listaTemporal.get(i)));
         }
+
+        MI_imageView.setOnClickListener(new View.OnClickListener() {
+            //@Override
+            public void onClick(View v) {
+                if(Animacion.equals("SI")){
+                    if(!pressed) {
+                        v.startAnimation(zoomin);
+                        pressed = !pressed;
+                    } else {
+                        v.startAnimation(zoomout);
+                        pressed = !pressed;
+                    }
+                }
+            }
+        });
+
 
     }
 
@@ -170,6 +199,10 @@ public class JuegoAutorActivity extends AppCompatActivity {
                 //el indice de la pregunta x/total
                 TextView textView_estado = (TextView) findViewById(R.id.textView_preguntaActualTotal);
                 textView_estado.setText((indiceActual+1) + "/" + numeroDePreguntas);
+
+                if(Animacion.equals("SI")){
+                    MI_imageView.startAnimation(zoomout);
+                }
 
                 if(CuentaAtras.equals("SI")){
                     cuentaatras(11);
@@ -631,7 +664,6 @@ public class JuegoAutorActivity extends AppCompatActivity {
             }
         });
     }
-
 
     public void cuentaatras(int seconds){
 

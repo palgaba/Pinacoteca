@@ -11,6 +11,17 @@ public class Configuracion {
     private String dificultad;
     private String tiempo;
     private String tipo;
+    private String animacion;
+    public String getAnimacion() {
+        return animacion;
+    }
+
+    public void setAnimacion(String animacion) {
+        this.animacion = animacion;
+    }
+
+
+
     public int getId() {
         return id;
     }

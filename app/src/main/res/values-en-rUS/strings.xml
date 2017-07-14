@@ -29,5 +29,6 @@
     <string name="Idioma_TIPO_Titulo">Search by Title</string>
     <string name="Idioma_resultados">Hits</string>
     <string name="Idioma_Volver">Return</string>
+    <string name="idioma_animacion">Animation</string>
 
 </resources>

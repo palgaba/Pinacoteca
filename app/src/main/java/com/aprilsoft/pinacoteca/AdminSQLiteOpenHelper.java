@@ -30,7 +30,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("create table Autores(id integer primary key, nombre text, idEstilo integer)");
         db.execSQL("create table Cuadros(id integer primary key, idAutor integer, idEstilo int, titulo text, imagen text)");
         db.execSQL("create table AutorEstilos(id integer primary key, idAutor integer, idEstilo int)");
-        db.execSQL("create table Configuracion(id integer primary key, NumeroPreguntas integer, Dificultad text, tipo text, tiempo text)");
+        db.execSQL("create table Configuracion(id integer primary key, NumeroPreguntas integer, Dificultad text, tipo text, tiempo text,animacion text)");
 
         //Insertamos los datos en la tabla Estilo
         db.execSQL("INSERT INTO Estilos (id, nombre, descripcion, grupo) VALUES (0,'Abstracto','Se aparta de la realidad de la representación figurativa, que es sustituida por un lenguaje visual autónomo de significado propio. Sin imitar modelos o formas naturales, profundiza en los aspectos formales, estructurales y cromáticos','geometrico')");
@@ -492,7 +492,7 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (288,71,18,'sem t tulo','cuadro288')");
 
         //Insertamos los datos en la tabla configuracion
-        db.execSQL("INSERT INTO Configuracion (id, NumeroPreguntas, Dificultad, tipo, tiempo ) VALUES (1,12,'NORMAL','AUTOR','NO')");
+        db.execSQL("INSERT INTO Configuracion (id, NumeroPreguntas, Dificultad, tipo, tiempo,animacion ) VALUES (1,12,'NORMAL','AUTOR','NO','SI')");
 
     }
 

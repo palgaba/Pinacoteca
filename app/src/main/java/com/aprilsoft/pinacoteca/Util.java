@@ -17,7 +17,7 @@ public class Util {
 
         SQLiteDatabase bd = admin.getReadableDatabase();
 
-        Cursor fila = bd.rawQuery("select id, NumeroPreguntas, Dificultad, tipo, tiempo FROM Configuracion where id=1", null);
+        Cursor fila = bd.rawQuery("select id, NumeroPreguntas, Dificultad, tipo, tiempo, animacion FROM Configuracion where id=1", null);
 
         if (fila.moveToFirst()) {
 
@@ -26,6 +26,7 @@ public class Util {
             out_confi.setDificultad(fila.getString(2));
             out_confi.setTipo(fila.getString(3));
             out_confi.setTiempo(fila.getString(4));
+            out_confi.setAnimacion(fila.getString(5));
 
         } else {
             out_confi = null;
@@ -55,6 +56,7 @@ public class Util {
         registro.put("Dificultad", Datos.getDificultad());
         registro.put("tipo", Datos.getTipo());
         registro.put("tiempo", Datos.getTiempo());
+        registro.put("animacion", Datos.getAnimacion());
 
         int cant = bd.update("Configuracion", registro, "id=1", null);
 

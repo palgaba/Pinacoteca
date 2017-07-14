@@ -36,5 +36,6 @@
 
     <string name="Idioma_resultados">Aciertos</string>
     <string name="Idioma_Volver">VOLVER</string>
+    <string name="idioma_animacion">Animacion</string>
 
 </resources>

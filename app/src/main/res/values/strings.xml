@@ -34,4 +34,5 @@
     <string name="Idioma_resultados">Aciertos</string>
     <string name="Idioma_Volver">VOLVER</string>
     <string name="Idioma_AcercaDeTexto" translatable="false">Pedro SEVILLA 2017</string>
+    <string name="idioma_animacion">Animacion</string>
 </resources>
