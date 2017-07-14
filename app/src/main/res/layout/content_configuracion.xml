@@ -269,8 +269,10 @@
                     android:layout_height="match_parent"
                     android:layout_marginRight="64dp"
                     android:layout_weight="1"
+                    android:background="@color/colorAccent"
                     android:onClick="CatalogoEstadisticas"
-                    android:text="@string/app_name" />
+                    android:text="@string/app_name"
+                    android:textColor="?attr/colorPrimaryDark" />
 
             </LinearLayout>
         </LinearLayout>
@@ -306,6 +308,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginRight="64dp"
                     android:layout_weight="1"
+                    android:background="@color/colorAccent"
                     android:onClick="EstiloEstadisticas"
                     android:text="@string/Idioma_Estilo" />
 

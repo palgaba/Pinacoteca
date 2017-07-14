@@ -45,13 +45,14 @@ public class Estilos extends AppCompatActivity {
         Cursor fila = bd.rawQuery(consultaSQL , null);
 
         List<Estilo> CatalogoEstilos = new ArrayList<>();
-
+        int i=0;
         //Nos aseguramos de que existe al menos un registro
         if (fila.moveToFirst()) {
 
             //Recorremos el cursor hasta que no haya más registros
             do {
                 Estilo estilo_item = new Estilo();
+                i++;
 
                 estilo_item.setIdEstilo(fila.getInt(0));
                 estilo_item.setNombre(fila.getString(1));
@@ -59,7 +60,8 @@ public class Estilos extends AppCompatActivity {
                 estilo_item.setGrupo(fila.getString(3));
 
                 Salida.add(
-                        fila.getString(1) + " :\n " +
+                        String.valueOf(i) + ". " +
+                        fila.getString(1).toUpperCase() + "\n   " +
                         fila.getString(2)+ "\n"
                 );
                 CatalogoEstilos.add(estilo_item);
