@@ -177,7 +177,6 @@ public class JuegoAutorActivity extends AppCompatActivity {
                 ImageView MiimageCodigo = (ImageView) findViewById(R.id.MI_imageView);
                 MiimageCodigo.setImageResource( resourceId );
 
-
                 switch (TipoJuego) {
                     case "AUTOR":
                         JuegoxAutor();

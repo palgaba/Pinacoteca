@@ -191,14 +191,21 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (61,'Richard Hamilton',21)");
         db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (62,'Eduardo Paolozzi',21)");
         db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (63,'Robert Rauschenberg',21)");
-        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (64,'CARLOS SAENZ DE TEJADA',18)");
-        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (65,'ROMAIN DE TIRTOFF',18)");
-        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (66,'JOSE DE ALMADA NEGREIROS',18)");
-        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (67,'TAMARA DE LEMPICKA',18)");
-        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (68,'ADOLPHE JEAN MARIE MOURON',18)");
-        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (69,'JOHN ARCHIBALD AUSTEN',18)");
-        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (70,'JOHN VASSOS',18)");
-        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (71,'BERNARDO MARQUES',18)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (64,'carlos saenz de tejada',18)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (65,'romain de tirtoff',18)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (66,'jose de almada negreiros',18)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (67,'Tamara de lempicka',18)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (68,'adolphe jean marie mouron',18)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (69,'john archibald austen',18)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (70,'john vassos',18)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (71,'bernardo marques',18)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (72,'Edvard Munch',12)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (73,'Ernst Ludwig Kirchner',12)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (74,'Amedeo Modigliani',12)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (75,'Otto dix',12)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (76,'Emil Nolde',12)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (77,'James Ensor',12)");
+        db.execSQL("INSERT INTO Autores (id, nombre, idEstilo) VALUES (78,'Franz Marc',12)");
 
         //Insertamos los datos en la tabla Cuadros/Obras
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (0,0,4,'Maya à la poupée','cuadro000')");
@@ -490,6 +497,66 @@ public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (286,67,18,'portrait of madame','cuadro286')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (287,67,18,'portrait of mrs boucard','cuadro287')");
         db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (288,71,18,'sem t tulo','cuadro288')");
+
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (289,4,2,'dance class at the opera','cuadro289')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (290,4,2,'place de la concorde','cuadro290')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (291,4,2,'self portrait','cuadro291')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (292,4,2,'the dancing class','cuadro292')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (293,4,2,'two ballet dancers','cuadro293')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (294,1,1,'cafe terrace place du forum arles','cuadro294')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (295,1,1,'factories at asnieres seen from the quai de clichy','cuadro295')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (296,1,1,'irises','cuadro296')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (297,1,1,'italian woman agostina segatori','cuadro297')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (298,1,1,'still life vase with fifteen sunflowers 1888 1 ','cuadro298')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (299,72,12,'madonna','cuadro299')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (300,72,12,'el grito 1893','cuadro300')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (301,72,12,'Amor y dolor','cuadro301')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (302,72,12,'Ansiedad','cuadro302')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (303,72,12,'friedrich nietzsche','cuadro303')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (304,72,12,'La danza de la vida','cuadro304')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (305,72,12,'Melancolía','cuadro305')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (306,72,12,'Muerte en la alcoba','cuadro306')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (307,72,12,'La Pubertad','cuadro307')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (308,72,12,'summer night inger on the shore 1889 ','cuadro308')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (309,72,12,'the flower of pain','cuadro309')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (310,72,12,'writer hans jaeger','cuadro310')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (311,72,12,'El grito 1893','cuadro311')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (312,72,12,'El grito 1895','cuadro312')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (313,72,12,'El grito 1896','cuadro313')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (314,72,12,'El grito 1910','cuadro314')");
+
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (315,73,12,'Cinco mujeres en la calle','cuadro315')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (316,73,12,'Female Artist','cuadro316')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (317,73,12,'Escena de calle de Berlín','cuadro317')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (318,73,12,'Autorretrato','cuadro318')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (319,73,12,'Equestrienne','cuadro319')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (320,73,12,'Fränzi ante una silla tallada','cuadro320')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (321,73,12,'Erna with Cigarette','cuadro321')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (322,74,12,'head of a girl','cuadro322')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (323,74,12,'jean alexandre','cuadro323')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (324,74,12,'jeanne hebuterne in a hat','cuadro324')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (325,74,12,'portrait of a young girl','cuadro325')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (326,74,12,'portrait of chaim soutine','cuadro326')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (327,74,12,'portrait of lunia czechowska in white blouse','cuadro327')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (328,74,12,'reclining nude on a blue cushion red nude','cuadro328')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (329,74,12,'Portret van Lunia Czechowska','cuadro329')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (330,74,12,'portrait of margarita','cuadro330')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (331,74,12,'Andr rouveyre','cuadro331')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (332,74,12,'Dedicated to the dramatist frank wedekind','cuadro332')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (333,75,12,'La belleza','cuadro333')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (334,75,12,'Retrato de la periodista Sylvia von Harden','cuadro334')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (335,75,12,'Ellis','cuadro335')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (336,76,12,'dance around the golden calf','cuadro336')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (337,76,12,'mask still life 3','cuadro337')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (338,76,12,'the last supper','cuadro338')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (339,76,12,'legend saint mary of egypt death in the desert','cuadro339')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (340,77,12,'Esqueletos disputandose un arrenque','cuadro340')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (341,77,12,'death and the masks','cuadro341')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (342,78,12,'nude lying in the flowers','cuadro342')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (343,78,12,'dog lying in the snow','cuadro343')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (344,78,12,'blue horse 1','cuadro344')");
+        db.execSQL("INSERT INTO Cuadros(id, idAutor ,idEstilo ,titulo ,imagen) VALUES (345,78,12,'blue fox','cuadro345')");
+
 
         //Insertamos los datos en la tabla configuracion
         db.execSQL("INSERT INTO Configuracion (id, NumeroPreguntas, Dificultad, tipo, tiempo,animacion ) VALUES (1,12,'NORMAL','AUTOR','NO','SI')");

@@ -33,6 +33,6 @@
     <string name="Idioma_TIPO_Titulo">BUSCAR por Titulo</string>
     <string name="Idioma_resultados">Aciertos</string>
     <string name="Idioma_Volver">VOLVER</string>
-    <string name="Idioma_AcercaDeTexto" translatable="false">Pedro SEVILLA 2017</string>
+    <string name="Idioma_AcercaDeTexto" translatable="false">Pedro SEVILLA 2017 v1.0</string>
     <string name="idioma_animacion">Animacion</string>
 </resources>
