@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Pinacoteca2.iml" filepath="$PROJECT_DIR$/Pinacoteca2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/PinacotecaGit.iml" filepath="$PROJECT_DIR$/.idea/modules/PinacotecaGit.iml" group="PinacotecaGit" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/PinacotecaGit-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/PinacotecaGit-app.iml" group="PinacotecaGit/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
